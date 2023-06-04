@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 /* import logo from '../../assets/logoHeader.png' */
 import '../CSS/style.css'
 import { Link } from 'react-router-dom'
+import { SiberBar } from '../Sidebar/SiberBar'
 /* import { AuthContext } from '../../Index' */
 
 export const Navbar = () => {
@@ -10,7 +11,7 @@ export const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+            <nav className="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm" style={{position: "fixed", width: "100%"}}>
                 <div className="container">
                     <Link to={'/'} id='a' className="navbar-brand d-block d-lg-none">
                         <img src='#' height="30px" />

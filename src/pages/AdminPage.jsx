@@ -6,7 +6,7 @@ export const AdminPage = () => {
 
         <>
         {/* <Navbar /> */}
-            <div className="container py-3">
+            <div className="container py-3" style={{marginTop: "4.5rem"}}>
                 <header>
                     <div className="pricing-header p-3 pb-md-4 mx-auto text-center">
                         <h1 className="display-4 fw-normal">Options Admin</h1>
