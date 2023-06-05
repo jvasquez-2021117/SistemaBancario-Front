@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { LoginPage } from './pages/LoginPage'
 import { AdminPage } from './pages/AdminPage'
+import { AddClient } from './pages/AddClient'
 
 export const Index = () => {
 
@@ -16,7 +17,7 @@ export const Index = () => {
             children:[
                 {
                     path: '/',
-                    element: <AdminPage />
+                    element: <AddClient />
                 }
             ]
         }
