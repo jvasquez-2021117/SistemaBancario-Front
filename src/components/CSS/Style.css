@@ -7,7 +7,7 @@
     font-size: 2em;
 }
 
-.fa {
+.bi {
     position: relative;
     display: table-cell;
     width: 60px;
@@ -151,50 +151,58 @@ nav.main-menu li.active>a,
 
 /* -------------------NAVBAR------------------- */
 .bg1 {
-    background-color: #2898;
+    /* background-color: #2898; */
+    background: rgb(16,122,204);
+    background: linear-gradient(90deg, rgba(16,122,204,1) 0%, rgba(21,41,124,0.989233193277311) 50%, rgba(16,122,204,1) 100%);
 }
-
 #a {
     font-size: 14px;
     font-weight: 700;
 }
-
 .superNav {
     font-size: 13px;
 }
-
 .form-control {
     outline: none !important;
     box-shadow: none !important;
 }
-
 @media screen and (max-width: 540px) {
     .centerOnMobile {
         text-align: center;
 
     }
 }
-
 #aXD {
     font-size: 15 px;
     transition: transform 0.2s ease-in-out;
     color: rgba(51, 51, 51, 0.801);
 }
-
 #aXD:hover {
     transform: scale(1.2);
     color: #8c7c62;
 }
-
 .img-hover {
     transition: transform 0.2s ease-in-out;
 }
-
 .img-hover:hover {
     transform: scale(1.2);
 }
-
-
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* -------------------LOGIN------------------- */
 .a{
@@ -426,8 +434,7 @@ label{
     transition: all 120ms ease-out 0s;
 }
 .textarea_box label{
-    font-weight: 500;
-    width: 100%;
+    font-weight: 500;    
     margin-bottom: 5px;
     display: block;
 }
@@ -540,3 +547,6 @@ form .gender{
         flex-direction: column;
     }   
 }
+
+
+

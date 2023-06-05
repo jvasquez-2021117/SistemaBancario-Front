@@ -10,7 +10,7 @@ export const App = () => {
   return (
     <>
       <Navbar />
-      <SiberBar />
+      
       <Outlet />
     </>
   )
