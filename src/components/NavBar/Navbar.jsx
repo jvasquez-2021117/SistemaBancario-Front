@@ -11,7 +11,7 @@ export const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm" style={{position: "fixed", width: "100%"}}>
+            <nav className="navbar navbar-expand-lg bg1 sticky-top navbar-light p-3 shadow-sm" style={{position: "fixed", width: "100%"}}>
                 <div className="container">
                     <Link to={'/'} id='a' className="navbar-brand d-block d-lg-none">
                         <img src='#' height="30px" />
@@ -25,7 +25,7 @@ export const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className=" collapse navbar-collapse" id="navbarNavDropdown">
-                        <h4>Sistema Bancario</h4>
+                        <h3>CashTrust</h3>
                         <ul className="navbar-nav ms-auto ">
                             <li className="nav-item">
                                 <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
