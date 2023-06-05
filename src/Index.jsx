@@ -6,6 +6,7 @@ import { NotFoundPage } from './pages/NotFoundPage'
 import { LoginPage } from './pages/LoginPage'
 import { AdminPage } from './pages/AdminPage'
 import { AddClient } from './pages/AddClient'
+import { ClienteView } from './pages/ClienteView'
 
 export const Index = () => {
 
@@ -17,7 +18,15 @@ export const Index = () => {
             children:[
                 {
                     path: '/',
+                    element: <LoginPage />
+                },
+                {
+                    path: '/create',
                     element: <AddClient />
+                },
+                {
+                    path: '/clients',
+                    element: <ClienteView />
                 }
             ]
         }
