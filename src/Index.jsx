@@ -10,6 +10,7 @@ import { ClienteView } from './pages/ClienteView'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { AddAccounts } from './pages/AddAccounts'
 
 export const AuthContext = createContext();
 
@@ -56,6 +57,10 @@ export const Index = () => {
                 {
                     path: '/clients',
                     element: <ClienteView />
+                },
+                {
+                    path: '/addAccount',
+                    element: <AddAccounts/>
                 }
             ]
         }
