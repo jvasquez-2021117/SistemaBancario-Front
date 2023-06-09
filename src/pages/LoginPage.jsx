@@ -1,18 +1,18 @@
 import axios from 'axios'
 import React, { useState, useContext } from 'react'
-/* import { AuthContext } from '../Index' */
+import { AuthContext } from '../Index'
 import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 import Swal from 'sweetalert2'
 
 export const LoginPage = () => {
 
     const navigate = useNavigate();
-
-    /* const { setLoggedIn, setDataUser } = useContext(AuthContext);
+    const { setLoggedIn, setDataUser } = useContext(AuthContext);
     const [form, setForm] = useState({
         email: '',
         password: ''
-    }) */
+    })
 
     const handleChange = (e) => {
         setForm({
@@ -38,7 +38,6 @@ export const LoginPage = () => {
                     icon: 'success',
                     title: data.message,
                 })
-                navigate('/home')
             }
             if (data.message == 'Check that all fields are complete') {
                 Swal.fire({
@@ -68,14 +67,14 @@ export const LoginPage = () => {
                             </div>
                         </section>
                         <div className="input-container name">
-                            <label htmlFor="name">Email / Username</label>
-                            <input type="text" id='name' name='name' />
+                            <label htmlFor="email">Email / Username</label>
+                            <input onChange={handleChange} type="text" id='email' name='email' />
                         </div>
                         <div className="input-container password">
                             <label htmlFor="password">Password</label>
-                            <input type="password" id='password' name='password' />
+                            <input onChange={handleChange} type="password" id='password' name='password' />
                         </div>
-                        <button className="signin-btn" type='submit'>SignIn</button>
+                        <button onClick={(e) => login(e)} className="signin-btn" type='submit'>Sign In</button>
                         <section className="copy legal">
                             <p><span className="small">By continuing, you agree to accept our <br />
                                 <a href="#">Privacy Policy </a>
