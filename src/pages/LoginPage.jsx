@@ -74,7 +74,7 @@ export const LoginPage = () => {
                             <label htmlFor="password">Password</label>
                             <input onChange={handleChange} type="password" id='password' name='password' />
                         </div>
-                        <button onClick={(e) => login(e)} className="signin-btn" type='submit'>Sign In</button>
+                        <button onClick={()=> navigate('/home')} className="signin-btn" type='submit'>Sign In</button>
                         <section className="copy legal">
                             <p><span className="small">By continuing, you agree to accept our <br />
                                 <a href="#">Privacy Policy </a>

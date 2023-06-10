@@ -1,31 +1,29 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { TableClient } from '../components/Tables/TableClient';
-import { SiberBar } from '../components/Sidebar/SiberBar';
+import { TableTypeAccount } from '../../components/Tables/TableTypeAccount';
+import { SiberBar } from '../../components/Sidebar/SiberBar';
 
-export const ClienteView = () => {
-    const [tableClient, setTableClient] = useState([{}]);
+export const TypeAccountsView = () => {
+    const [ tableTypeAccounts, setTableTypeAccounts] = useState ([{}]);
     const navigate = useNavigate()
 
-    const getTableClient = async () => {
+    const getTableTypeAccounts = async () =>{
         try {
-            const { data } = await axios('http://localhost:3200/user/get');
-            setTableClient(data.users)
+            const { data } = await axios('http://localhost:3200/typeAccount/get');
+            setTableTypeAccounts(data.typeAccounts)
         } catch (e) {
             console.log(e);
         }
     }
-
-    useEffect(() => getTableClient, [])
+    useEffect(() => getTableTypeAccounts, [])
     return (
         <>
             <SiberBar />
-            <br />
-            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#9dc19d" }}>
+            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#9dc19d", marginTop: '5%' }}>
                 <div className="container-fluid">
                     <div className="collapse navbar-collapse justify-content-center" id="navbarCenteredExample" >
-                        <h1 className='text-white' style={{ fontSize: "2.5rem" }}>VIEW RESERVATION</h1>
+                        <h1 className='text-white' style={{ fontSize: "2.5rem" }}>VIEW TypeAccouts</h1>
                     </div>
                 </div>
             </nav>
@@ -62,44 +60,24 @@ export const ClienteView = () => {
                     <div className="mask d-flex align-items-center h-100">
                         <div className="container">
                             <div className="row justify-content-center">
-                                <div className="col-12">
+                                <div className="col-6">
                                     <div className="card">
                                         <div className="card-body p-0">
-                                            <div className="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style={{ position: 'relative', height: '700px' }}>
+                                            <div className="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style={{ position: 'relative', height: '500px' }}>
                                                 <table className="table table-striped ">
                                                     <thead style={{ backgroundColor: '#8c7c62' }}>
                                                         <tr>
                                                             <th scope="col">Name</th>
-                                                            <th scope="col">Username</th>
-                                                            <th scope="col">No. Account</th>
-                                                            <th scope="col">DPI</th>
-                                                            <th scope='col'>Address</th>
-                                                            <th scope='col'>Phone</th>
-                                                            <th scope='col'>Email</th>
-                                                            <th scope='col'>Password</th>
-                                                            <th scope='col'>Work</th>
-                                                            <th scope='col'>Salary</th>
-                                                            <th scope='col'>Role</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableClient.map(({ _id, name, username, noAccount, DPI, adress, phone, email, password, work, salary, role }, index) => {
-                                                                return (
+                                                            tableTypeAccounts.map(({_id, name}, index) => {
+                                                                return(
                                                                     <tr key={index}>
-                                                                        <TableClient
-                                                                            name={name}
-                                                                            username={username}
-                                                                            noAccount={noAccount}
-                                                                            DPI={DPI}
-                                                                            adress={adress}
-                                                                            phone={phone}
-                                                                            email={email}
-                                                                            password={password}
-                                                                            work={work}
-                                                                            salary={salary}
-                                                                            role={role}
-                                                                        ></TableClient>
+                                                                        <TableTypeAccount
+                                                                        name={name}
+                                                                        ></TableTypeAccount>
                                                                     </tr>
                                                                 )
                                                             })
