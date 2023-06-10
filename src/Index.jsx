@@ -10,7 +10,6 @@ import { ClienteView } from './pages/ClienteView'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { TypeAccountsView } from './pages/ViewsPage/TypeAccountsView'
 
 export const AuthContext = createContext();
 
@@ -57,14 +56,6 @@ export const Index = () => {
                 {
                     path: '/clients',
                     element: <ClienteView />
-                },
-                {
-                    path: '/home',
-                    element: <AdminPage />
-                },
-                {
-                    path: '/typeAccount',
-                    element: <TypeAccountsView />
                 }
             ]
         }
