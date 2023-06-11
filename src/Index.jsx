@@ -19,6 +19,8 @@ import { CreateProduct } from './pages/CreatePages/CreateProduct'
 import { ServicesView } from './pages/ViewsPage/ServicesView'
 import { CreateService } from './pages/CreatePages/CreateService'
 import { AddAccounts } from './pages/CreatePages/AddAccounts'
+import { UpdateServices } from './pages/Updates/UpdateServices'
+import { UpdateProduct } from './pages/Updates/UpdateProduct'
 
 export const AuthContext = createContext();
 
@@ -112,8 +114,16 @@ export const Index = () => {
                     element: <CreateService />
                 },
                 {
+                    path: '/updateService/:id',
+                    element: <UpdateServices />
+                },
+                {
                     path: '/createAccount',
                     element: <AddAccounts />
+                },
+                {
+                    path: '/updateProduct/:id',
+                    element: <UpdateProduct />
                 }
             ]
         }
