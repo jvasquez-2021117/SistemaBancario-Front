@@ -10,6 +10,11 @@ import { ClienteView } from './pages/ClienteView'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { TypeAccountsView } from './pages/ViewsPage/TypeAccountsView'
+import { ProductsView } from './pages/ViewsPage/ProductsView'
+import { CreateProduct } from './pages/CreatePages/CreateProduct'
+import { ServicesView } from './pages/ViewsPage/ServicesView'
+import { CreateService } from './pages/CreatePages/CreateService'
 
 export const AuthContext = createContext();
 
@@ -56,6 +61,26 @@ export const Index = () => {
                 {
                     path: '/clients',
                     element: <ClienteView />
+                },
+                {
+                    path: '/typeAccount',
+                    element: <TypeAccountsView />
+                },
+                {
+                    path: '/products',
+                    element: <ProductsView />
+                },
+                {
+                    path: '/createProduct',
+                    element: <CreateProduct />
+                },
+                {
+                    path: '/services',
+                    element: <ServicesView />
+                },
+                {
+                    path: '/createServices',
+                    element: <CreateService />
                 }
             ]
         }
