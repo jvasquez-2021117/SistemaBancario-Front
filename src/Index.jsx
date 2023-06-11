@@ -10,6 +10,9 @@ import { ClienteView } from './pages/ClienteView'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { ProfilePage } from './pages/ProfilePage'
+import { UpdateProfile } from './pages/Updates/UpdateProfile'
+import { UpdateClient } from './pages/Updates/UpdateClient'
 import { TypeAccountsView } from './pages/ViewsPage/TypeAccountsView'
 import { ProductsView } from './pages/ViewsPage/ProductsView'
 import { CreateProduct } from './pages/CreatePages/CreateProduct'
@@ -21,25 +24,38 @@ export const AuthContext = createContext();
 export const Index = () => {
 
     const [loggedIn, setLoggedIn] = useState(false)
+    const [contextData, setContextData] = useState(null)
 
     const [dataUser, setDataUser] = useState({
         id: '',
         name: '',
-        surname: '',
+        username: '',
+        DPI: '',
+        adress: '',
+        phone: '',
+        email: '',
+        work: '',
+        salary: '',
         role: ''
     })
 
     useEffect(() => {
         let token = localStorage.getItem('token')
         if (token) setLoggedIn(true)
-    }, [])
+    }, []);
 
     const handleLogout = () => {
         setLoggedIn(false);
         setDataUser({
             id: '',
             name: '',
-            surname: '',
+            username: '',
+            DPI: '',
+            adress: '',
+            phone: '',
+            email: '',
+            work: '',
+            salary: '',
             role: ''
         });
     };
@@ -61,6 +77,18 @@ export const Index = () => {
                 {
                     path: '/clients',
                     element: <ClienteView />
+                },
+                {
+                    path: '/profile',
+                    element: <ProfilePage />
+                },
+                {
+                    path: '/updateProfile/:id',
+                    element: <UpdateProfile />
+                },
+                {
+                    path: '/updateClient/:id',
+                    element: <UpdateClient />
                 },
                 {
                     path: '/typeAccount',
@@ -87,7 +115,7 @@ export const Index = () => {
     ])
     return (
         <>
-            <AuthContext.Provider value={{loggedIn, setLoggedIn, dataUser, setDataUser}}>
+            <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser }}>
                 <RouterProvider router={routes} />
             </AuthContext.Provider>
         </>

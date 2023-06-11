@@ -30,14 +30,12 @@ nav.main-menu.expanded {
     position: fixed;
     top: 0;
     bottom: 0;
-    /* height: 100vh; */
     height: 100%;
     left: 0;
     width: 60px;
     overflow: hidden;
     -webkit-transition: width .05s linear;
     transition: width .05s linear;
-    /* -webkit-transform: translateZ(0) scale(1, 1); */
     z-index: 1000;
     margin-top: 4.5rem;
 }
@@ -150,6 +148,7 @@ nav.main-menu li.active>a,
 
 
 /* -------------------NAVBAR------------------- */
+
 .bg1 {
     /* background-color: #2898; */
     background: rgb(16, 122, 204);
@@ -173,7 +172,6 @@ nav.main-menu li.active>a,
 @media screen and (max-width: 540px) {
     .centerOnMobile {
         text-align: center;
-
     }
 }
 
@@ -206,7 +204,6 @@ nav.main-menu li.active>a,
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     z-index: 1;
 }
@@ -431,6 +428,10 @@ label {
     color: red;
 }
 
+.input_box {
+    height: 4rem;
+}
+
 .input_box input {
     width: 100%;
     height: 45px;
@@ -440,6 +441,33 @@ label {
     font-size: 16px;
     padding-left: 15px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    background-color: #f6f8fa;
+    font-family: 'Poppins', sans-serif;
+    transition: all 120ms ease-out 0s;
+}
+
+.input_box input[type=number] {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.24);
+}
+
+.input_box input[type=email] {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.24);
+}
+
+.input_box input:focus,
+.input_box input:valid {
+    box-shadow: 0px 0px 0px 2px #AC8ECE;
+}
+
+.select {
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 15px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.24);
     background-color: #f6f8fa;
     font-family: 'Poppins', sans-serif;
     transition: all 120ms ease-out 0s;
@@ -486,6 +514,7 @@ form .gender {
 }
 
 .gender .gender_title {
+    height: 50px;
     font-size: 20px;
     font-weight: 500;
 }
@@ -526,7 +555,6 @@ form .gender {
 
 .reg_btn {
     padding: 25px;
-    margin: 0 0;
 }
 
 .reg_btn button {
@@ -567,7 +595,6 @@ form .gender {
     }
 
 }
-
 
 @media screen and (max-width: 419px) {
     .gender .category {

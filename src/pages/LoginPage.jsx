@@ -10,7 +10,7 @@ export const LoginPage = () => {
     const navigate = useNavigate();
     const { setLoggedIn, setDataUser } = useContext(AuthContext);
     const [form, setForm] = useState({
-        email: '',
+        username: '',
         password: ''
     })
 
@@ -31,13 +31,20 @@ export const LoginPage = () => {
                 setDataUser({
                     id: data.userLogged.id,
                     name: data.userLogged.name,
-                    surname: data.userLogged.surname,
+                    username: data.userLogged.username,
+                    DPI: data.userLogged.DPI,
+                    adress: data.userLogged.adress,
+                    phone: data.userLogged.phone,
+                    email: data.userLogged.email,
+                    work: data.userLogged.work,
+                    salary: data.userLogged.salary,
                     role: data.userLogged.role
                 })
                 Swal.fire({
                     icon: 'success',
                     title: data.message,
                 })
+                navigate('/profile')
             }
             if (data.message == 'Check that all fields are complete') {
                 Swal.fire({
@@ -67,14 +74,14 @@ export const LoginPage = () => {
                             </div>
                         </section>
                         <div className="input-container name">
-                            <label htmlFor="email">Email / Username</label>
-                            <input onChange={handleChange} type="text" id='email' name='email' />
+                            <label htmlFor="username">Email / Username</label>
+                            <input onChange={handleChange} type="text" id='username' name='username' />
                         </div>
                         <div className="input-container password">
                             <label htmlFor="password">Password</label>
                             <input onChange={handleChange} type="password" id='password' name='password' />
                         </div>
-                        <button onClick={()=> navigate('/home')} className="signin-btn" type='submit'>Sign In</button>
+                        <button onClick={(e) => login(e)} className="signin-btn" type='submit'>Sign In</button>
                         <section className="copy legal">
                             <p><span className="small">By continuing, you agree to accept our <br />
                                 <a href="#">Privacy Policy </a>

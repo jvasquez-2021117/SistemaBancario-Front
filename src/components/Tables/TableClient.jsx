@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TableClient = ({name, username, noAccount, DPI, adress, phone, email, password, work, salary, role}) => {
+export const TableClient = ({name, username, noAccount, DPI, adress, phone, email, work, salary, role}) => {
     return (
         <>
         <td>{name}</td>
@@ -10,7 +10,6 @@ export const TableClient = ({name, username, noAccount, DPI, adress, phone, emai
         <td>{adress}</td>
         <td>{phone}</td>
         <td>{email}</td>
-        <td>{password}</td>
         <td>{work}</td>
         <td>{salary}</td>
         <td>{role}</td>
