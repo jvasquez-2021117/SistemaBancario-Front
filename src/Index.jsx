@@ -13,6 +13,11 @@ import { useEffect } from 'react'
 import { ProfilePage } from './pages/ProfilePage'
 import { UpdateProfile } from './pages/Updates/UpdateProfile'
 import { UpdateClient } from './pages/Updates/UpdateClient'
+import { TypeAccountsView } from './pages/ViewsPage/TypeAccountsView'
+import { ProductsView } from './pages/ViewsPage/ProductsView'
+import { CreateProduct } from './pages/CreatePages/CreateProduct'
+import { ServicesView } from './pages/ViewsPage/ServicesView'
+import { CreateService } from './pages/CreatePages/CreateService'
 
 export const AuthContext = createContext();
 
@@ -84,6 +89,26 @@ export const Index = () => {
                 {
                     path: '/updateClient/:id',
                     element: <UpdateClient />
+                },
+                {
+                    path: '/typeAccount',
+                    element: <TypeAccountsView />
+                },
+                {
+                    path: '/products',
+                    element: <ProductsView />
+                },
+                {
+                    path: '/createProduct',
+                    element: <CreateProduct />
+                },
+                {
+                    path: '/services',
+                    element: <ServicesView />
+                },
+                {
+                    path: '/createServices',
+                    element: <CreateService />
                 }
             ]
         }
