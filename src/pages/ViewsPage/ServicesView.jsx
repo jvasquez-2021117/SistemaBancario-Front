@@ -21,10 +21,10 @@ export const ServicesView = () => {
     return (
         <>
             <SiberBar />
-            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#9dc19d", marginTop: '5%' }}>
-                <div className="container-fluid">
-                    <div className="collapse navbar-collapse justify-content-center" id="navbarCenteredExample" >
-                        <h1 className='text-white' style={{ fontSize: "2.5rem" }}>VIEW Products</h1>
+            <nav className='navbar navbar-expand-lg navbar-light' style={{ marginTop: '6rem' }}>
+                <div className='container-fluid'>
+                    <div className='collapse navbar-collapse justify-content-center' id='navbarCenteredExample' >
+                        <h1 className='text-black' style={{ fontSize: '2.5rem' }}>VIEW SERVICES</h1>
                     </div>
                 </div>
             </nav>

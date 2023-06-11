@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
 import '../CSS/style.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { SiberBar } from '../Sidebar/SiberBar'
 /* import { AuthContext } from '../../Index' */
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate()
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -71,13 +72,13 @@ export const Navbar = () => {
                             }
                         </ul>
                         <div className='dropdown'>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-person-circle' viewBox='0 0 16 16'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-person-circle dropdown-toggle' viewBox='0 0 16 16'>
                                 <path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z' />
                                 <path fillRule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z' />
                             </svg>
-                            <div className='dropdown-content'>
-                                <p>Perfil</p>
-                                <p>Cuentas</p>
+                            <div className='dropdown-content dropdown-menu'>
+                                <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
+                                <p className='dropdown-item'>Cuentas</p>
                                 <p>LogOut</p>
                             </div>
                         </div>

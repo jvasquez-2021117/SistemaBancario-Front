@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { TableClient } from '../components/Tables/TableClient';
-import { SiberBar } from '../components/Sidebar/SiberBar';
+import { TableClient } from '../../components/Tables/TableClient';
+import { SiberBar } from '../../components/Sidebar/SiberBar';
 
 export const ClienteView = () => {
     
@@ -42,17 +42,17 @@ export const ClienteView = () => {
                                                 <table className='table table-striped '>
                                                     <thead style={{ backgroundColor: '#8c7c62' }}>
                                                         <tr>
-                                                            <th scope='col'>Name</th>
-                                                            <th scope='col'>Username</th>
-                                                            <th scope='col'>No. Account</th>
-                                                            <th scope='col'>DPI</th>
-                                                            <th scope='col'>Address</th>
-                                                            <th scope='col'>Phone</th>
-                                                            <th scope='col'>Email</th>
-                                                            <th scope='col'>Work</th>
-                                                            <th scope='col'>Salary</th>
-                                                            <th scope='col'>Role</th>
-                                                            <th scope='col'>Action</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Name</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Username</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >No. Account</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DPI</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Address</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Phone</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Email</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Work</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Salary</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Role</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

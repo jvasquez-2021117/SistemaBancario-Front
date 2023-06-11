@@ -5,8 +5,8 @@ import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { LoginPage } from './pages/LoginPage'
 import { AdminPage } from './pages/AdminPage'
-import { AddClient } from './pages/AddClient'
-import { ClienteView } from './pages/ClienteView'
+import { AddClient } from './pages/CreatePages/AddClient'
+import { ClienteView } from './pages/ViewsPage/ClienteView'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -18,6 +18,7 @@ import { ProductsView } from './pages/ViewsPage/ProductsView'
 import { CreateProduct } from './pages/CreatePages/CreateProduct'
 import { ServicesView } from './pages/ViewsPage/ServicesView'
 import { CreateService } from './pages/CreatePages/CreateService'
+import { AddAccounts } from './pages/CreatePages/AddAccounts'
 
 export const AuthContext = createContext();
 
@@ -109,6 +110,10 @@ export const Index = () => {
                 {
                     path: '/createServices',
                     element: <CreateService />
+                },
+                {
+                    path: '/createAccount',
+                    element: <AddAccounts />
                 }
             ]
         }
