@@ -60,7 +60,6 @@ nav.main-menu.expanded {
     font-family: arial;
     font-size: 14px;
     text-decoration: none;
-    /* -webkit-transform: translateZ(0) scale(1, 1); */
     -webkit-transition: all .1s linear;
     transition: all .1s linear;
 
@@ -194,16 +193,16 @@ nav.main-menu li.active>a,
     transform: scale(1.2);
 }
 
-.dropdown {
+/* .dropdown {
     position: relative;
     display: inline-block;
 }
-
+ */
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 120px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     z-index: 1;
 }
@@ -360,7 +359,6 @@ label {
 
 
 /* -------------------ADD_CLIENT------------------- */
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap'); */
 
 .mother {
     display: flex;
@@ -605,7 +603,8 @@ form .gender {
 /* -------------------FOOTER------------------- */
 
 footer {
-    background-color: lightgreen;
+    background: rgb(16, 122, 204);
+    background: linear-gradient(90deg, rgba(21, 41, 124, 0.989233193277311) 0%, rgba(16, 122, 204, 1) 50%, rgba(21, 41, 124, 0.989233193277311) 100%);
     padding: 5px;
     text-align: center;
 }

@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { SiberBar } from '../components/Sidebar/SiberBar'
+import { SiberBar } from '../../components/Sidebar/SiberBar'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import '../components/CSS/Style.css'
 
 export const AddClient = () => {
 
@@ -38,7 +37,7 @@ export const AddClient = () => {
             })
         } catch (e) {
             Swal.fire({
-                icon: 'success',
+                icon: 'error',
                 title: e.response.data.message
             })
         }

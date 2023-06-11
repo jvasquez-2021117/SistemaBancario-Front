@@ -69,9 +69,15 @@ export const UpdateProfile = () => {
                                 <input type="number" id="inputPhone" placeholder="Enter your number" defaultValue={tableUserInfo.phone} name='phone' />
                             </div>
                         </div>
-                        <div className='user_details'>
-                            <button type='button' onClick={() => updateAccountUser()}>Confirm</button>
-                            <button type='button' onClick={() => navigate('/profile')}>Cancel</button>
+                        <div className='reg_btn'>
+                            <div className="row">
+                                <div className="col">
+                                    <button type='button' onClick={() => updateAccountUser()}>Confirm</button>
+                                </div>
+                                <div className="col" >
+                                    <button type='button'onClick={() => navigate('/profile')} >Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
