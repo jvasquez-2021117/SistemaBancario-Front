@@ -5,7 +5,7 @@ import { TableClient } from '../../components/Tables/TableClient';
 import { SiberBar } from '../../components/Sidebar/SiberBar';
 
 export const ClienteView = () => {
-    
+
     const [tableClient, setTableClient] = useState([{}]);
     const navigate = useNavigate()
 
@@ -26,10 +26,26 @@ export const ClienteView = () => {
             <nav className='navbar navbar-expand-lg navbar-light' style={{ marginTop: '6rem' }}>
                 <div className='container-fluid'>
                     <div className='collapse navbar-collapse justify-content-center' id='navbarCenteredExample' >
-                        <h1 className='text-black' style={{ fontSize: '2.5rem' }}>VIEW RESERVATION</h1>
+                        <h1 className='text-black' style={{ fontSize: '2.5rem' }}>VIEW CLIENTS</h1>
                     </div>
                 </div>
             </nav>
+            <div className="container t">
+                <div className="row d-flex justify-content-center ">
+                    <div className="a1">
+                        <div className="search-box">
+                            <div className="row1">
+                                <input type="text" id='inputSearch' placeholder='Search' />
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-search bi-solid" viewBox="0 0 16 25">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <section className='intro'>
                 <div className='bg-image h-100' style={{ backgroundColor: '#f5f7fa', marginTop: '1.5rem' }}>
                     <div className='mask d-flex align-items-center h-100'>

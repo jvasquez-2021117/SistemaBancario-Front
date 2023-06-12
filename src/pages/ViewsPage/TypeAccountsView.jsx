@@ -5,10 +5,10 @@ import { TableTypeAccount } from '../../components/Tables/TableTypeAccount';
 import { SiberBar } from '../../components/Sidebar/SiberBar';
 
 export const TypeAccountsView = () => {
-    const [ typeAccounts, setTypeAccounts] = useState ([{}]);
+    const [typeAccounts, setTypeAccounts] = useState([{}]);
     const navigate = useNavigate()
 
-    const getTableTypeAccounts = async () =>{
+    const getTableTypeAccounts = async () => {
         try {
             const { data } = await axios('http://localhost:3200/typeAccount/get');
             setTypeAccounts(data.types)
@@ -30,7 +30,7 @@ export const TypeAccountsView = () => {
             <br />
             <div className="container t">
                 <div className="row d-flex justify-content-center ">
-                <div className="a1">
+                    <div className="a1">
                         <div className="search-box">
                             <div className="row1">
                                 <input type="text" id='inputSearch' placeholder='Search' />
@@ -39,18 +39,6 @@ export const TypeAccountsView = () => {
                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                     </svg>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-2 col-lg-2">
-                        <div className="row">
-                            <div className="col1">
-                                {/* <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>
-                                Exit
-                            </button> */}
-                                
-                                <a href="#" className='btn1'>Add</a>
-                                <a href="#" className='btn1'>Add</a>
                             </div>
                         </div>
                     </div>
@@ -74,11 +62,11 @@ export const TypeAccountsView = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            typeAccounts.map(({_id, name}, index) => {
-                                                                return(
+                                                            typeAccounts.map(({ _id, name }, index) => {
+                                                                return (
                                                                     <tr key={index}>
                                                                         <TableTypeAccount
-                                                                        name={name}
+                                                                            name={name}
                                                                         ></TableTypeAccount>
                                                                     </tr>
                                                                 )
