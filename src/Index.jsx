@@ -21,6 +21,9 @@ import { CreateService } from './pages/CreatePages/CreateService'
 import { AddAccounts } from './pages/CreatePages/AddAccounts'
 import { UpdateServices } from './pages/Updates/UpdateServices'
 import { UpdateProduct } from './pages/Updates/UpdateProduct'
+import { TransferView } from './pages/ViewsPage/TransferView'
+import { DepositView } from './pages/ViewsPage/DepositView'
+import { CreateDeposit } from './pages/CreatePages/CreateDeposit'
 
 export const AuthContext = createContext();
 
@@ -124,6 +127,18 @@ export const Index = () => {
                 {
                     path: '/updateProduct/:id',
                     element: <UpdateProduct />
+                },
+                {
+                    path: '/tranfers',
+                    element: <TransferView />
+                },
+                {
+                    path: '/deposits',
+                    element: <DepositView />
+                },
+                {
+                    path: '/createDeposit',
+                    element: <CreateDeposit />
                 }
             ]
         }
