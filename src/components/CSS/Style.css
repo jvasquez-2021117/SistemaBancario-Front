@@ -174,10 +174,11 @@ nav.main-menu li.active>a,
     }
 }
 
+
 #aXD {
     font-size: 15 px;
     transition: transform 0.2s ease-in-out;
-    color: rgba(51, 51, 51, 0.801);
+    color: rgba(51, 51, 51, 0.801); 
 }
 
 #aXD:hover {
@@ -202,15 +203,29 @@ nav.main-menu li.active>a,
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 120px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    min-width: 100px;
+    box-shadow: rgba(83, 83, 83, 0.226) 0px 3px 5px;
     z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
+    
 }
 
+.dropdown-item {
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    color: #3b5ed1;
+    text-decoration: none;
+}
+
+#logU:hover {
+    color: #d13b3b;
+    text-decoration: none;
+}
 /* -------------------LOGIN------------------- */
 .a {
     font-size: 100%;
@@ -267,7 +282,7 @@ a:hover {
 
 .left {
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-        url(https://cms-combimedia-master.s3.us-east-2.amazonaws.com/posts/11713/conversions/peppa-pig-large.jpg);
+        url('../../assets/images/bgBanco2.jpg');
     background-size: cover;
 }
 

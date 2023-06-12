@@ -62,8 +62,8 @@ export const LoginPage = () => {
             <div className="split-screen a b">
                 <div className="left">
                     <section className="copy">
-                        <h1>CashTrust</h1>
-                        <p>Sintema Bancario</p>
+                        <h1 style={{fontSize: 80}}>CashTrust</h1>
+                        <p style={{fontSize: 30}} >Sistema Bancario</p>
                     </section>
                 </div>
                 <div className="right">
