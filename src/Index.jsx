@@ -77,6 +77,10 @@ export const Index = () => {
                     element: <LoginPage />
                 },
                 {
+                    path: '/home',
+                    element: <AdminPage />
+                },
+                {
                     path: '/create',
                     element: <AddClient />
                 },
