@@ -50,7 +50,7 @@ export const ClienteView = () => {
                     <div className="a1">
                         <div className="search-box">
                             <div className="row1">
-                                <input type="text" id='inputSearch' placeholder='Search' defaultValue={search} onChange={handleChangeSearch} />
+                                <input type="text" id='inputSearch' placeholder='Search' /* defaultValue={search} onChange={handleChangeSearch} */ />
                                 <label htmlFor="inputSearch">
                                     <button>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" className="bi bi-search bi-solid" viewBox="0 0 16 25">
