@@ -10,7 +10,7 @@ export const TransferView = () => {
 
     const getTableTransfer = async () =>{
         try {
-            const { data } = await axios('http://localhost:3200/transfers/get');
+            const { data } = await axios('http://localhost:3200/transfer/get');
             setTransfer(data.transfers);
         } catch (e) {
             console.log(e);
