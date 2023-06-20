@@ -24,6 +24,7 @@ import { UpdateProduct } from './pages/Updates/UpdateProduct'
 import { TransferView } from './pages/ViewsPage/TransferView'
 import { DepositView } from './pages/ViewsPage/DepositView'
 import { CreateDeposit } from './pages/CreatePages/CreateDeposit'
+import { ProfileAccountsPage } from './pages/ProfileAccountsPage'
 
 export const AuthContext = createContext();
 
@@ -143,6 +144,10 @@ export const Index = () => {
                 {
                     path: '/createDeposit',
                     element: <CreateDeposit />
+                },
+                {
+                    path: '/ProfileAccountUser',
+                    element: <ProfileAccountsPage />
                 }
             ]
         }
