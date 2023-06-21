@@ -11,7 +11,8 @@ export const ModalTransder = ({ isOpen, onClose }) => {
         accountReq: '',
         accountSender: '',
         amount: '',
-        description: ''
+        description: '',
+        dpi: ''
     })
 
     const createHandleChange = (e) => {
@@ -62,6 +63,10 @@ export const ModalTransder = ({ isOpen, onClose }) => {
                             <div className="input_box">
                                 <label htmlFor="inputAmount">Amount</label>
                                 <input type="number" id="inputAmount" placeholder="Enter the amount" name='amount' onChange={createHandleChange} required />
+                            </div>
+                            <div className="input_box">
+                                <label htmlFor="inputDpi">DPI</label>
+                                <input type="number" id="inputDpi" placeholder="Enter the amount" name='dpi' onChange={createHandleChange} required />
                             </div>
                             <div className='input_box' style={{ width: '100%' }}>
                                 <label htmlFor='inputDescrip'>Description</label>

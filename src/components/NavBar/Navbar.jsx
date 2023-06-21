@@ -79,7 +79,7 @@ export const Navbar = () => {
                             </svg>
                             <div className='dropdown-content dropdown-menu' id='desple'>
                                 <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
-                                <p className='dropdown-item'>Cuentas</p>
+                                <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
                                 <p className='dropdown-item' id='logU'>LogOut</p>
                             </div>
                         </div>
