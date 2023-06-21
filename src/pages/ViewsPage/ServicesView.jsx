@@ -78,7 +78,6 @@ export const ServicesView = () => {
                                 Exit
                             </button> */}
                                 <a href="#" onClick={() => navigate('/createServices')} className='btn1'>Add</a>
-                                <a href="#" className='btn1'>Add</a>
                             </div>
                         </div>
                     </div>

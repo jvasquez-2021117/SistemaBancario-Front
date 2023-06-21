@@ -46,7 +46,7 @@ export const UpdateProduct = () => {
             <div className="mother">
                 <div className="container1">
                     <div className="title">
-                        <p>Create Product</p>
+                        <p>Update Product</p>
                     </div>
                     <form action="#">
                         <div className="user_details">
