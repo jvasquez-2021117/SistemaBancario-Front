@@ -86,7 +86,7 @@ export const AddAccounts = () => {
                                 <div className="col">
                                     <button type='button' onClick={() => addAccount()} className='btn btn-primary' style={{ backgroundColor: '#2c4893' }}>AddAccount</button>
                                 </div>
-                                <div className="col">
+                                <div className="col reg_btnC">
                                     <button type='button' onClick={() => navigate('/account')} className='btn btn-primary' style={{ backgroundColor: '#2c4893' }}>Cancel</button>
                                 </div>
                             </div>

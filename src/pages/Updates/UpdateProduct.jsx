@@ -64,7 +64,7 @@ export const UpdateProduct = () => {
                                 <div className="col">
                                     <button type='button' onClick={() => updateProduct()} >Update</button>
                                 </div>
-                                <div className="col">
+                                <div className="col reg_btnC">
                                     <button type='button' onClick={() => navigate('/products')} >Cancel</button>
                                 </div>
                             </div>

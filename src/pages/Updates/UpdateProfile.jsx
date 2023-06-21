@@ -74,7 +74,7 @@ export const UpdateProfile = () => {
                                 <div className="col">
                                     <button type='button' onClick={() => updateAccountUser()}>Confirm</button>
                                 </div>
-                                <div className="col" >
+                                <div className="col reg_btnC" >
                                     <button type='button'onClick={() => navigate('/profile')} >Cancel</button>
                                 </div>
                             </div>

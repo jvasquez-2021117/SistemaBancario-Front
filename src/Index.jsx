@@ -26,6 +26,7 @@ import { DepositView } from './pages/ViewsPage/DepositView'
 import { CreateDeposit } from './pages/CreatePages/CreateDeposit'
 import { ProfileAccountsPage } from './pages/ProfileAccountsPage'
 import { AccountView } from './pages/ViewsPage/AccountView'
+import { FavoritPage } from './pages/FavoritPage'
 
 
 export const AuthContext = createContext();
@@ -155,6 +156,10 @@ export const Index = () => {
                     path: '/ProfileAccountUser',
                     element: <ProfileAccountsPage />
                 },
+                {
+                    path: '/favorite',
+                    element: <FavoritPage />
+                }
                 
             ]
         }

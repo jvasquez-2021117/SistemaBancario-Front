@@ -91,7 +91,14 @@ export const UpdateClient = () => {
                             </div>
                         </div>
                         <div className='reg_btn'>
-                            <button type='button' onClick={() => updateAccountClient()}>Update Client</button>
+                            <div className="row">
+                                <div className="col">
+                                    <button type='button' onClick={() => updateAccountClient()}>Update Client</button>
+                                </div>
+                                <div className="col reg_btnC">
+                                    <button type='button' onClick={() => navigate('/clients')}>Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
