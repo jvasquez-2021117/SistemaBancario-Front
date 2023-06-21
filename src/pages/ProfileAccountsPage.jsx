@@ -38,7 +38,6 @@ export const ProfileAccountsPage = () => {
                                 state={state}
                                 typeAccount={typeAccount?.name}
                             ></TableAccountProfile>
-                            
                         </div>
                     )
                 })
