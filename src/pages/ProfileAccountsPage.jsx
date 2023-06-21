@@ -25,8 +25,14 @@ export const ProfileAccountsPage = () => {
     return (
         <>
             <SiberBar />
-            <br /><br /><br /><br /><br /><br /><br /><br />
-            <h1>Vista de Cuentas</h1>
+            <nav className='navbar navbar-expand-lg navbar-light' style={{ marginTop: '6rem' }}>
+                <div className='container-fluid'>
+                    <div className='collapse navbar-collapse justify-content-center' id='navbarCenteredExample' >
+                        <h1 className='text-black' style={{ fontSize: '2.5rem' }}>My accounts</h1>
+                    </div>
+                </div>
+            </nav>
+            <br /><br />
             {
                 tableProfileAccount.map(({ _id, user, balances, state, typeAccount }, index) => {
                     return (
