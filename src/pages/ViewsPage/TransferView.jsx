@@ -8,7 +8,7 @@ export const TransferView = () => {
     const [transfer, setTransfer] = useState([{}])
     const navigate = useNavigate()
 
-    const getTableTransfer = async () =>{
+    const getTableTransfer = async () => {
         try {
             const { data } = await axios('http://localhost:3200/transfer/get');
             setTransfer(data.transfers);
@@ -58,24 +58,30 @@ export const TransferView = () => {
                                                     <thead style={{ backgroundColor: '#8c7c62' }}>
                                                         <tr>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Receptor</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Name</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Emisor</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Name</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Monto</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Date</th>
+                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Hour</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Description</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Actions</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            transfer.map(({_id, accountReq, accountSender, amount, date, description}, i) => {
-                                                                return(
+                                                            transfer.map(({ _id, accountReq, accountReq2, accountSender, accountSender2, amount, date, hour, description }, i) => {
+                                                                return (
                                                                     <tr key={i}>
                                                                         <TableTransfer
-                                                                        accountReq={accountReq}
-                                                                        accountSender={accountSender}
-                                                                        amount={amount}
-                                                                        date={date}
-                                                                        description={description}
+                                                                            accountReq={accountReq?._id}
+                                                                            accountReq2={accountReq?.user.name}
+                                                                            accountSender={accountSender?._id}
+                                                                            accountSender2={accountSender?.user.name}
+                                                                            amount={amount}
+                                                                            date={date}
+                                                                            hour={hour}
+                                                                            description={description}
                                                                         ></TableTransfer>
                                                                         <td className='text-center align-middle'>
                                                                             <div className='btn-group align-top'>

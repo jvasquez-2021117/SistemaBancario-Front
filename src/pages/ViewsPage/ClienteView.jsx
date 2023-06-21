@@ -77,7 +77,6 @@ export const ClienteView = () => {
                                                         <tr>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Name</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Username</th>
-                                                            <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >No. Account</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DPI</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Address</th>
                                                             <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Phone</th>
@@ -90,13 +89,12 @@ export const ClienteView = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableClient.map(({ _id, name, username, noAccount, DPI, adress, phone, email, work, salary, role }, index) => {
+                                                            tableClient.map(({ _id, name, username, DPI, adress, phone, email, work, salary, role }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableClient
                                                                             name={name}
                                                                             username={username}
-                                                                            noAccount={noAccount}
                                                                             DPI={DPI}
                                                                             adress={adress}
                                                                             phone={phone}

@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TableDeposit } from '../../components/Tables/TableDeposit'
 import { SiberBar } from '../../components/Sidebar/SiberBar'
+import { TableDeposit } from '../../components/Tables/TableDeposit'
 
 export const DepositView = () => {
   const [deposit, setDeposit] = useState([{}])
@@ -64,7 +64,8 @@ export const DepositView = () => {
                         <table className='table table-striped '>
                           <thead style={{ backgroundColor: '#8c7c62' }}>
                             <tr>
-                              <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Receptor</th>
+                              <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >No. Account</th>
+                              <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Nombre</th>
                               <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Monto</th>
                               <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Date</th>
                               <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Actions</th>
@@ -72,11 +73,12 @@ export const DepositView = () => {
                           </thead>
                           <tbody>
                             {
-                              deposit.map(({ _id, accountReq, amount, date }, i) => {
+                              deposit.map(({ _id, accountReq, accountReq2, amount, date }, i) => {
                                 return (
                                   <tr key={i}>
                                     <TableDeposit
-                                      accountReq={accountReq?.accountReq}
+                                      accountReq={accountReq?._id}
+                                      accountReq2={accountReq?.user.name}
                                       amount={amount}
                                       date={date}
                                     ></TableDeposit>
