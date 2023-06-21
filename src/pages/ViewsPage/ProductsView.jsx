@@ -78,7 +78,6 @@ export const ProductsView = () => {
                                 Exit
                             </button> */}
                                 <a href="#" onClick={()=> navigate('/createProduct')} className='btn1'>Add</a>
-                                <a href="#" className='btn1'>Add</a>
                             </div>
                         </div>
                     </div>

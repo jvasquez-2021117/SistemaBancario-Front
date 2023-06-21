@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 export const CreateService = () => {
     const navigate = useNavigate();
 
-    const [ form, setForm] = useState({
+    const [form, setForm] = useState({
         name: '',
         price: ''
     })
@@ -19,7 +19,7 @@ export const CreateService = () => {
         })
     }
 
-    const create = async () =>{
+    const create = async () => {
         try {
             const { data } = await axios.post('http://localhost:3200/services/add', form)
             Swal.fire({
@@ -51,7 +51,14 @@ export const CreateService = () => {
                             </div>
                         </div>
                         <div className="reg_btn">
-                            <button type='button' onClick={(e) => create(e)} >Create</button>
+                            <div className="row">
+                                <div className="col">
+                                    <button type='button' onClick={(e) => create(e)} >Create</button>
+                                </div>
+                                <div className="col">
+                                    <button type='button' onClick={() => navigate('/services')} >Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -8,19 +8,19 @@ import Swal from 'sweetalert2';
 export const CreateDeposit = () => {
     const navigate = useNavigate();
 
-    const [ form, setForm ] = useState({
+    const [form, setForm] = useState({
         accountReq: '',
         amount: ''
     })
 
-    const createHandleChange =(e) => {
+    const createHandleChange = (e) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value
         })
     }
 
-    const create = async() => {
+    const create = async () => {
         try {
             const { data } = await axios.post('http://localhost:3200/deposit/add', form);
             Swal.fire({
@@ -55,7 +55,14 @@ export const CreateDeposit = () => {
                             </div>
                         </div>
                         <div className="reg_btn">
-                            <button type='button' onClick={(e) => create(e)} >Create</button>
+                            <div className="row">
+                                <div className="col">
+                                    <button type='button' onClick={(e) => create(e)} >Create</button>
+                                </div>
+                                <div className="col">
+                                    <button type='button' onClick={() => navigate('/deposits')} >Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
