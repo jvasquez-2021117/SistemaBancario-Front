@@ -64,7 +64,7 @@ export const UpdateServices = () => {
                                 <div className="col">
                                     <button type='button' onClick={() => updateService()} >Update</button>
                                 </div>
-                                <div className="col">
+                                <div className="col reg_btnC">
                                     <button type='button' onClick={() => navigate('/services')} >Cancel</button>
                                 </div>
                             </div>

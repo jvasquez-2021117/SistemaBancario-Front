@@ -80,6 +80,7 @@ export const Navbar = () => {
                             <div className='dropdown-content dropdown-menu' id='desple'>
                                 <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
                                 <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
+                                <a href="#" className='dropdown-item' onClick={() => navigate('/favorite')}>Favorites</a>
                                 <p className='dropdown-item' id='logU'>LogOut</p>
                             </div>
                         </div>

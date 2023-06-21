@@ -55,7 +55,7 @@ export const CreateService = () => {
                                 <div className="col">
                                     <button type='button' onClick={(e) => create(e)} >Create</button>
                                 </div>
-                                <div className="col">
+                                <div className="col reg_btnC">
                                     <button type='button' onClick={() => navigate('/services')} >Cancel</button>
                                 </div>
                             </div>
