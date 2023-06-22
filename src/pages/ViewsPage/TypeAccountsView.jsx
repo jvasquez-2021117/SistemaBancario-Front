@@ -12,7 +12,6 @@ export const TypeAccountsView = () => {
     const [tableTypeAccounts, setTableTypeAccounts] = useState([{}])
     const [search, setSearch] = useState("")
 
-
     const getTableTypeAccounts = async () => {
         try {
             const { data } = await axios('http://localhost:3200/typeAccount/get');
@@ -30,12 +29,11 @@ export const TypeAccountsView = () => {
 
     const filtrar = (searchTerm) => {
         var resultSearch = tableTypeAccounts.filter((elemento) => {
-            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                return elemento
         })
         setTypeAccounts(resultSearch)
     }
-
-
 
     useEffect(() => getTableTypeAccounts, [])
 

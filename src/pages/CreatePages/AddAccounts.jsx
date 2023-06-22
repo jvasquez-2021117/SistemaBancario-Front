@@ -3,8 +3,6 @@ import { SiberBar } from '../../components/Sidebar/SiberBar'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-
-
 export const AddAccounts = () => {
 
     const [typeAccount, setTypeAccount] = useState([{}]);

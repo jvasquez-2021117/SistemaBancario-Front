@@ -68,12 +68,13 @@ export const DepositView = () => {
                               <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Nombre</th>
                               <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Monto</th>
                               <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Date</th>
+                              <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Hour</th>
                               <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Actions</th>
                             </tr>
                           </thead>
                           <tbody>
                             {
-                              deposit.map(({ _id, accountReq, accountReq2, amount, date }, i) => {
+                              deposit.map(({ _id, accountReq, amount, accountReq2, date, hour }, i) => {
                                 return (
                                   <tr key={i}>
                                     <TableDeposit
@@ -81,6 +82,7 @@ export const DepositView = () => {
                                       accountReq2={accountReq?.user.name}
                                       amount={amount}
                                       date={date}
+                                      hour={hour}
                                     ></TableDeposit>
                                     <td className='text-center align-middle'>
                                       <div className='btn-group align-top'>

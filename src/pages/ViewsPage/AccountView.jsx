@@ -7,18 +7,47 @@ import { TableAccount } from '../../components/Tables/TableAccount';
 export const AccountView = () => {
 
     const [tableAccount, setTableAccount] = useState([{}]);
+    const [accounts, setAccounts] = useState([{}])
+    const [search, setSearch] = useState("")
     const navigate = useNavigate();
 
     const getTableAccount = async () => {
         try {
             const { data } = await axios('http://localhost:3200/account/get');
             setTableAccount(data.accounts)
+            setAccounts(data.accounts)
         } catch (e) {
             console.log(e);
         }
     }
 
-    useEffect(() => getTableAccount, [])
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableAccount.filter((elemento) => {
+            if (elemento._id.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+                elemento.user.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+        })
+        setAccounts(resultSearch)
+    }
+
+    const sortTableByMovementsAscendt = () => {
+        const sortedTable = [...tableAccount].sort((a, b) => b.movements - a.movements);
+        setTableAccount(sortedTable)
+    }
+
+    const sortTableByMovementsDescendt = () => {
+        const sortedTable = [...tableAccount].sort((a, b) => a.movements - b.movements);
+        setTableAccount(sortedTable)
+    }
+
+    useEffect(() => {
+        getTableAccount();
+    }, [])
+
     return (
         <>
             <SiberBar />
@@ -34,7 +63,7 @@ export const AccountView = () => {
                     <div className="a1">
                         <div className="search-box">
                             <div className="row1">
-                                <input type="text" id='inputSearch' placeholder='Search' /* defaultValue={search} onChange={handleChangeSearch} */ />
+                                <input type="text" id='inputSearch' placeholder='Search' defaultValue={search} onChange={handleChangeSearch} />
                                 <label htmlFor="inputSearch">
                                     <button>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" className="bi bi-search bi-solid" viewBox="0 0 16 25">
@@ -49,7 +78,10 @@ export const AccountView = () => {
                         <div className="row">
                             <div className="col1">
                                 <a href="#" onClick={() => navigate('/createAccount')} className='btn1'>CREATE</a>
+                                <a href="#" onClick={() => sortTableByMovementsAscendt()} className='btn1'>DESCENDETE</a>
+                                <a href="#" onClick={() => sortTableByMovementsDescendt()} className='btn1'>ASCENDETE</a>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -78,7 +110,7 @@ export const AccountView = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableAccount.map(({ _id, balances, typeAccount, state, user, dpi, movements }, i) => {
+                                                            accounts.map(({ _id, balances, typeAccount, state, user, dpi, movements }, i) => {
                                                                 return (
                                                                     <tr key={i}>
                                                                         <TableAccount
