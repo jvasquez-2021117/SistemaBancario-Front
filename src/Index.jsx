@@ -160,13 +160,13 @@ export const Index = () => {
                     path: '/favorite',
                     element: <FavoritPage />
                 }
-                
+
             ]
         }
     ])
     return (
         <>
-            <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser }}>
+            <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser, handleLogout }}>
                 <RouterProvider router={routes} />
             </AuthContext.Provider>
         </>

@@ -5,18 +5,35 @@ import axios from 'axios'
 import { TableProduct } from '../../components/Tables/TableProduct'
 import Swal from 'sweetalert2'
 
-
 export const ProductsView = () => {
+
     const [products, setProducts] = useState([{}])
+    const [tableProducts, setTableProducts] = useState([{}])
+    const [search, setSearch] = useState("")
+
     const navigate = useNavigate()
 
     const getTableProducts = async () => {
         try {
             const { data } = await axios('http://localhost:3200/product/get')
             setProducts(data.products)
+            setTableProducts(data.products)
         } catch (e) {
             console.log(e);
         }
+    }
+
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableProducts.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                return elemento
+        })
+        setProducts(resultSearch)
     }
 
     const deleteProducts = async (id) => {
@@ -46,6 +63,7 @@ export const ProductsView = () => {
     }
 
     useEffect(() => getTableProducts, [])
+
     return (
         <>
             <SiberBar />
@@ -62,7 +80,7 @@ export const ProductsView = () => {
                     <div className="a1">
                         <div className="search-box">
                             <div className="row1">
-                                <input type="text" id='inputSearch' placeholder='Search' />
+                                <input type="text" id='inputSearch' placeholder='Search' value={search} onChange={handleChangeSearch} />
                                 <button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-search bi-solid" viewBox="0 0 16 25">
                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -77,7 +95,7 @@ export const ProductsView = () => {
                                 {/* <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>
                                 Exit
                             </button> */}
-                                <a href="#" onClick={()=> navigate('/createProduct')} className='btn1'>Add</a>
+                                <a href="#" onClick={() => navigate('/createProduct')} className='btn1'>Add</a>
                             </div>
                         </div>
                     </div>

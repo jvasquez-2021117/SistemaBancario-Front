@@ -1,19 +1,38 @@
 import React, { useContext, useState } from 'react'
-import '../CSS/style.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { SiberBar } from '../Sidebar/SiberBar'
-/* import { AuthContext } from '../../Index' */
+import { AuthContext } from '../../Index'
 import logo from '../../assets/images/CashLogo.png'
+import '../CSS/style.css'
+import Swal from 'sweetalert2'
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate()
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
 
-    /* const { dataUser, loggedIn } = useContext(AuthContext) */
+    const { handleLogout, dataUser, loggedIn } = useContext(AuthContext)
+
+    const logOut = () => {
+        Swal.fire({
+            title: 'Do you want to log out?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Closed session',
+                    '',
+                    'success',
+                );
+                localStorage.clear();
+                handleLogout();
+                navigate('/');
+            }
+        });
+    }
 
     return (
         <>
@@ -31,59 +50,34 @@ export const Navbar = () => {
                         <span className='navbar-toggler-icon'></span>
                     </button>
                     <div className=' collapse navbar-collapse' id='navbarNavDropdown'>
-                        <h3 style={{color: '#FFF', fontSize: 30, marginLeft: 10 }}>Cash Trust</h3>
-                        <ul className='navbar-nav ms-auto '>
-                            <li className='nav-item'>
-                                <Link to={'/home'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{color: '#FFF'}}>
-                                    Home
-                                </Link>
-                            </li>
-                            <li className='nav-item'>
-                                <Link to={'/profile'} id='aXD' className='nav-link mx-2 text-uppercase' style={{color: '#FFF'}}>
-                                    Login
-                                </Link>
-                            </li>
-                            {
-                                /* loggedIn == true && dataUser.role == 'ADMIN-APP' ? (
-                                    <>
-                                        <li className='nav-item'>
-                                            <Link to={'/profile/graph'} id='aXD' className='nav-link mx-2 text-uppercase'>
-                                                Statistics
-                                            </Link>
-                                        </li>
-                                        <li className='nav-item'>
-                                            <Link to={'/profile/optionAdmin'} id='aXD' className='nav-link mx-2 text-uppercase'>
-                                                Option
-                                            </Link>
-                                        </li>
-                                        <li className='nav-item'>
-                                            <Link to={'/profile/users'} id='aXD' className='nav-link mx-2 text-uppercase'>
-                                                Users
-                                            </Link>
-                                        </li>
-                                    </>
-                                ) : loggedIn == true && dataUser.role == 'ADMIN-HOTEL' ? (
+                        <h3 style={{ color: '#FFF', fontSize: 30, marginLeft: 10 }}>Cash Trust</h3>
+                        {
+                            loggedIn == true ? (
+                                <ul className='navbar-nav ms-auto '>
                                     <li className='nav-item'>
-                                        <Link to={'/profile/optionAdmin'} id='aXD' className='nav-link mx-2 text-uppercase'>
-                                            Option
+                                        <Link to={'/home'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
+                                            Home
                                         </Link>
                                     </li>
-                                ) :
-                                    <></> */
-                            }
-                        </ul>
-                        <div className='dropdown'>
-                            <svg style={{color: '#FFF'}}     xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-person-circle dropdown-toggle' viewBox='0 0 16 16'>
-                                <path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z' />
-                                <path fillRule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z' />
-                            </svg>
-                            <div className='dropdown-content dropdown-menu' id='desple'>
-                                <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
-                                <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
-                                <a href="#" className='dropdown-item' onClick={() => navigate('/favorite')}>Favorites</a>
-                                <p className='dropdown-item' id='logU'>LogOut</p>
-                            </div>
-                        </div>
+                                </ul>
+                            ) : <></>
+                        }
+                        {
+                            loggedIn == true ? (
+                                <div className='dropdown'>
+                                    <svg style={{ color: '#FFF' }} xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-person-circle dropdown-toggle' viewBox='0 0 16 16'>
+                                        <path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z' />
+                                        <path fillRule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z' />
+                                    </svg>
+                                    <div className='dropdown-content dropdown-menu' id='desple'>
+                                        <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
+                                        <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
+                                        <a href="#" className='dropdown-item' onClick={() => navigate('/favorite')}>Favorites</a>
+                                        <p onClick={() => logOut()} className='dropdown-item' id='logU'>LogOut</p>
+                                    </div>
+                                </div>
+                            ) : <></>
+                        }
                     </div>
                 </div>
             </nav>
