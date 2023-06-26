@@ -21,6 +21,7 @@
 .main-menu:hover,
 nav.main-menu.expanded {
     width: 250px;
+    height: 100%;
     overflow: visible;
 }
 
@@ -178,7 +179,7 @@ nav.main-menu li.active>a,
 #aXD {
     font-size: 15 px;
     transition: transform 0.2s ease-in-out;
-    color: rgba(51, 51, 51, 0.801); 
+    color: rgba(51, 51, 51, 0.801);
 }
 
 #aXD:hover {
@@ -210,7 +211,7 @@ nav.main-menu li.active>a,
 
 .dropdown:hover .dropdown-content {
     display: block;
-    
+
 }
 
 .dropdown-item {
@@ -226,6 +227,7 @@ nav.main-menu li.active>a,
     color: #d13b3b;
     text-decoration: none;
 }
+
 /* -------------------LOGIN------------------- */
 .a {
     font-size: 100%;
@@ -587,6 +589,7 @@ form .gender {
 .reg_btn button:hover {
     background: linear-gradient(to right, #15297c, #107acc);
 }
+
 .reg_btnC button {
     height: 45px;
     width: 100%;

@@ -9,6 +9,7 @@ export const SiberBar = () => {
             <div>
                 <nav className="main-menu">
                     <ul>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/create')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" className="bi bi-person-fill-add bi-2x " viewBox="0 0 16 16">
@@ -20,6 +21,7 @@ export const SiberBar = () => {
                                 </span>
                             </a>
                         </li>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/clients')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-gear" viewBox="0 0 16 16">
@@ -30,6 +32,7 @@ export const SiberBar = () => {
                                 </span>
                             </a>
                         </li>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/account')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
@@ -42,6 +45,7 @@ export const SiberBar = () => {
                                 </span>
                             </a>
                         </li>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/typeAccount')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-exclamation-circle" viewBox="0 0 16 16">
@@ -53,6 +57,7 @@ export const SiberBar = () => {
                                 </span>
                             </a>
                         </li>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/products')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-seam" viewBox="0 0 16 16">
@@ -63,6 +68,7 @@ export const SiberBar = () => {
                                 </span>
                             </a>
                         </li>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/services')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
@@ -75,6 +81,7 @@ export const SiberBar = () => {
                                 </span>
                             </a>
                         </li>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/tranfers')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
@@ -85,6 +92,7 @@ export const SiberBar = () => {
                                 </span>
                             </a>
                         </li>
+                        <br />
                         <li className="has-subnav">
                             <a href="#" onClick={() => navigate('/deposits')}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-piggy-bank" viewBox="0 0 16 16">
