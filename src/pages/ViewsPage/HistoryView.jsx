@@ -28,13 +28,12 @@ export const HistoryView = () => {
     }
   }
 
-  const getTransfer = async (activate2, button) => {
+  const getTransfer = async (activate2) => {
     try {
       handleButtonClick(activate2);
       const { data } = await axios(`http://localhost:3200/historyTransfer/get/${dataUser.id}`);
       setData(data.history)
       setTitle('History Transfer');
-      toggleColor(button);
     } catch (e) {
       console.log(e);
     }
@@ -73,15 +72,6 @@ export const HistoryView = () => {
 
   }
 
-  function toggleColor(button) {
-    if (button.classList.contains("btn-primary")) {
-      button.classList.remove("btn-primary");
-      button.classList.add("btn-danger");
-    } else {
-      button.classList.remove("btn-danger");
-      button.classList.add("btn-primary");
-    }
-  }
 
   return (
     <>
