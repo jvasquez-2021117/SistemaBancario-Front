@@ -707,6 +707,8 @@ button .bi-solid {
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
 }
 
+
+
 .col1 {
     margin-top: 20px;
 }
@@ -745,3 +747,4 @@ thead {
     top: 0;
     position: sticky;
 }
+
