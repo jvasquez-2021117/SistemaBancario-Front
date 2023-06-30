@@ -1,33 +1,20 @@
 import React from 'react'
 
-export const TableFavorites = ({owner, accountFav}) => {
+export const TableFavorites = ({ nickName, accountFav }) => {
     return (
         <>
             <div className='container'>
                 <div className="card col-8 mx-auto">
                     <div className='card-header'>
-                        <h5 className="card-title">{owner}</h5>
+                        <h5 className="card-title">{nickName}</h5>
                         <h5 className="card-title">CUENTA {accountFav} </h5>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16" style={{width: '80%', transform: 'translate(65%, -140%)', position: 'absolute'}}>
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                        </svg>
                     </div>
-                    <div className="card-body">
-                        <div className="#">
-                        </div>
-                        <p className="card-text text-end h5">
-                            GTQ  <br />
-                            {/* <img src={CashLogo} className="img-fluid" alt="..." style={{ width: '8%', filter: 'invert(100%)', position: 'absolute', transform: 'translate(-1100%, -35%)', opacity: '0.5' }} /> */}
-                            <small className="text-muted">Saldo</small>
-                        </p>
+                    <div className="reg_btn">
+                        <button type='button' /* onClick={handleOpenModal} */ className='btn btn-primary' style={{ backgroundColor: '#2c4893', width: '65%', marginLeft: '15%' }}>Transfer</button>
                     </div>
-                    {/* <div className="reg_btn">
-                        <div className="row">
-                            <div className="col">
-                                <button type='button' onClick={handleOpenModal} className='btn btn-primary' style={{ backgroundColor: '#2c4893' }}>Transfer</button>
-                            </div>
-                            <div className="col">
-                                <button type='button' onClick={() => navigate('/account')} className='btn btn-primary' style={{ backgroundColor: '#2c4893' }}>Record</button>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
             <br />

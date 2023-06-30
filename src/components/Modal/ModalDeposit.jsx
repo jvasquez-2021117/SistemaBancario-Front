@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-import { SiberBar } from '../../components/Sidebar/SiberBar'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import Swal from 'sweetalert2';
+import React, { useState } from 'react'
+import { Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-
-export const CreateDeposit = () => {
+export const ModalDeposit = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -35,14 +33,20 @@ export const CreateDeposit = () => {
             })
         }
     }
+
+    if (!isOpen) {
+        return null;
+    }
     return (
         <>
-            <SiberBar />
-            <div className="mother">
-                <div className="container1">
-                    <div className="title">
-                        <p>Create Deposit</p>
-                    </div>
+            <Modal show={isOpen}>
+                <Modal.Header>
+                    <Modal.Title className='text-dark'>Deposit</Modal.Title>
+                    <button onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </Modal.Header>
+                <Modal.Body>
                     <form action="#">
                         <div className="user_details">
                             <div className="input_box">
@@ -55,18 +59,11 @@ export const CreateDeposit = () => {
                             </div>
                         </div>
                         <div className="reg_btn">
-                            <div className="row">
-                                <div className="col">
-                                    <button type='button' onClick={(e) => create(e)} >Create</button>
-                                </div>
-                                <div className="col reg_btnC">
-                                    <button type='button' onClick={() => navigate('/deposits')} >Cancel</button>
-                                </div>
-                            </div>
+                            <button type='button' onClick={(e) => create(e)} >Create</button>
                         </div>
                     </form>
-                </div>
-            </div>
+                </Modal.Body>
+            </Modal>
         </>
     )
 }

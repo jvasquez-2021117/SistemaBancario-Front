@@ -29,6 +29,7 @@ export const ModalTransder = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            navigate('/ProfileAccountUser')
         } catch (e) {
             Swal.fire({
                 icon: 'error',
