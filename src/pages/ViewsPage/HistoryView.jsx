@@ -18,10 +18,10 @@ export const HistoryView = () => {
 
   const getDeposit = async (activate2) => {
     try {
+      setTitle('History Deposit');
       handleButtonClick(activate2);
       const { data } = await axios(`http://localhost:3200/historyDeposit/get/${dataUser.id}`);
       setData(data.history)
-      setTitle('History Deposit');
       console.log(showDeposit);
     } catch (e) {
       console.log(e);
@@ -30,10 +30,10 @@ export const HistoryView = () => {
 
   const getTransfer = async (activate2) => {
     try {
+      setTitle('History Transfer');
       handleButtonClick(activate2);
       const { data } = await axios(`http://localhost:3200/historyTransfer/get/${dataUser.id}`);
       setData(data.history)
-      setTitle('History Transfer');
     } catch (e) {
       console.log(e);
     }
@@ -97,16 +97,16 @@ export const HistoryView = () => {
           </div>
         </div>
       </div>
-      <section className='intro'>
+      <section className='intro' style={{marginTop: '3rem'}}>
         <div className='bg-image h-100' style={{ backgroundColor: '#f5f7fa', marginTop: '1.5rem' }}>
           <div className='mask d-flex align-items-center h-100'>
             <div className='container'>
               <div className='row justify-content-center'>
-                <div className='col-10'>
-                  <div className='card'>
+                <div className='col-10' >
+                  <div className='card box-shadow'>
                     <div className='card-body p-0'>
                       <div className='table-responsive table-scroll' data-mdb-perfect-scrollbar='true' style={{ position: 'relative', height: '700px' }}>
-                        <table className='table table-striped '>
+                        <table className='table table-striped'>
                           <thead style={{ backgroundColor: '#8c7c62' }}>
                             <tr>
                               {

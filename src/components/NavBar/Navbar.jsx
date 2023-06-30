@@ -62,6 +62,13 @@ export const Navbar = () => {
                                 </ul>
                             ) : <></>
                         }
+                        <ul className='navbar-nav ms-auto '>
+                                    <li className='nav-item'>
+                                        <Link to={'/shopService'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
+                                            Home
+                                        </Link>
+                                    </li>
+                                </ul>
                         {
                             loggedIn == true ? (
                                 <div className='dropdown'>

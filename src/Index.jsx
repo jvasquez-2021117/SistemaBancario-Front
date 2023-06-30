@@ -28,6 +28,7 @@ import { ProfileAccountsPage } from './pages/ProfileAccountsPage'
 import { AccountView } from './pages/ViewsPage/AccountView'
 import { FavoritPage } from './pages/FavoritPage'
 import { HistoryView } from './pages/ViewsPage/HistoryView'
+import { BuyServicePage } from './pages/BuyServicePage'
 
 
 export const AuthContext = createContext();
@@ -164,6 +165,10 @@ export const Index = () => {
                 {
                     path: '/history',
                     element: <HistoryView/>
+                },
+                {
+                    path: '/shopService',
+                    element: <BuyServicePage></BuyServicePage>
                 }
 
             ]
