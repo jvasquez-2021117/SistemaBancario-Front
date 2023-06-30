@@ -15,15 +15,11 @@ import { UpdateProfile } from './pages/Updates/UpdateProfile'
 import { UpdateClient } from './pages/Updates/UpdateClient'
 import { TypeAccountsView } from './pages/ViewsPage/TypeAccountsView'
 import { ProductsView } from './pages/ViewsPage/ProductsView'
-import { CreateProduct } from './pages/CreatePages/CreateProduct'
 import { ServicesView } from './pages/ViewsPage/ServicesView'
-import { CreateService } from './pages/CreatePages/CreateService'
-import { AddAccounts } from './pages/CreatePages/AddAccounts'
 import { UpdateServices } from './pages/Updates/UpdateServices'
 import { UpdateProduct } from './pages/Updates/UpdateProduct'
 import { TransferView } from './pages/ViewsPage/TransferView'
 import { DepositView } from './pages/ViewsPage/DepositView'
-import { CreateDeposit } from './pages/CreatePages/CreateDeposit'
 import { ProfileAccountsPage } from './pages/ProfileAccountsPage'
 import { AccountView } from './pages/ViewsPage/AccountView'
 import { FavoritPage } from './pages/FavoritPage'
@@ -115,24 +111,12 @@ export const Index = () => {
                     element: <ProductsView />
                 },
                 {
-                    path: '/createProduct',
-                    element: <CreateProduct />
-                },
-                {
                     path: '/services',
                     element: <ServicesView />
                 },
                 {
-                    path: '/createServices',
-                    element: <CreateService />
-                },
-                {
                     path: '/updateService/:id',
                     element: <UpdateServices />
-                },
-                {
-                    path: '/createAccount',
-                    element: <AddAccounts />
                 },
                 {
                     path: '/account',
@@ -151,10 +135,6 @@ export const Index = () => {
                     element: <DepositView />
                 },
                 {
-                    path: '/createDeposit',
-                    element: <CreateDeposit />
-                },
-                {
                     path: '/ProfileAccountUser',
                     element: <ProfileAccountsPage />
                 },
@@ -166,9 +146,9 @@ export const Index = () => {
                     path: '/record',
                     element: <RecordPage />
                 },
-                 {
+                {
                     path: '/history',
-                    element: <HistoryView/>
+                    element: <HistoryView />
                 }
 
             ]

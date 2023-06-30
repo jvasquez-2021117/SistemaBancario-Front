@@ -63,12 +63,12 @@ export const FavoritPage = () => {
                 </div>
             </div>
             {
-                tableFavorites.map(({_id, owner, accountFav}, i) => {
+                tableFavorites.map(({_id, nickName, accountFav}, i) => {
                     return(
                         <div key={i}>
                             <TableFavorites
-                            owner={owner}
-                            /* accountFav={accountFav} */
+                            nickName={nickName}
+                            accountFav={accountFav}
                             ></TableFavorites>
                         </div>
                     )

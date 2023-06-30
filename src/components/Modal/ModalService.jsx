@@ -1,10 +1,10 @@
+import axios from 'axios'
 import React, { useState } from 'react'
-import { SiberBar } from '../../components/Sidebar/SiberBar'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import { Modal } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
-export const CreateService = () => {
+export const ModalService = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -31,14 +31,17 @@ export const CreateService = () => {
             console.log(e);
         }
     }
+
     return (
         <>
-            <SiberBar />
-            <div className="mother">
-                <div className="container1">
-                    <div className="title">
-                        <p>Create Services</p>
-                    </div>
+            <Modal show={isOpen}>
+                <Modal.Header>
+                    <Modal.Title className='text-dark'>Create Services</Modal.Title>
+                    <button onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </Modal.Header>
+                <Modal.Body>
                     <form action="#">
                         <div className="user_details">
                             <div className="input_box">
@@ -51,18 +54,11 @@ export const CreateService = () => {
                             </div>
                         </div>
                         <div className="reg_btn">
-                            <div className="row">
-                                <div className="col">
-                                    <button type='button' onClick={(e) => create(e)} >Create</button>
-                                </div>
-                                <div className="col reg_btnC">
-                                    <button type='button' onClick={() => navigate('/services')} >Cancel</button>
-                                </div>
-                            </div>
+                            <button type='button' onClick={(e) => create(e)} >Create</button>
                         </div>
                     </form>
-                </div>
-            </div>
+                </Modal.Body>
+            </Modal>
         </>
     )
 }

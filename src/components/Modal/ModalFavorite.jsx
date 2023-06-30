@@ -9,8 +9,8 @@ export const ModalFavorite = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
-        owner: '',
-        /* DPI: '', */
+        nickName: '',
+        dpi: '',
         accountFav: ''
     })
 
@@ -53,15 +53,15 @@ export const ModalFavorite = ({ isOpen, onClose }) => {
                         <div className="user_details">
                             <div className="input_box">
                                 <label htmlFor="inputFav">No. account</label>
-                                <input type="text" id="inputFav" placeholder="Enter the amount" name='accountFav' onChange={createHandleChange} required />
+                                <input type="text" id="inputFav" placeholder="Enter the No. Account" name='accountFav' onChange={createHandleChange} required />
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputDpi">DPI</label>
-                                <input type="number" id="inputDpi" placeholder="Enter the amount" name='dpi' /* onChange={createHandleChange} */ required />
+                                <input type="number" id="inputDpi" placeholder="Enter the DPI" name='dpi' /* onChange={createHandleChange} */ required />
                             </div>
                             <div className="input_box">
-                                <label htmlFor="inputOwner">Owner</label>
-                                <input type="text" id="inputOwner" placeholder="Enter the No. Account" onChange={createHandleChange} name='owner' required />
+                                <label htmlFor="inputName">Owner</label>
+                                <input type="text" id="inputName" placeholder="Enter the NickName" onChange={createHandleChange} name='nickName' required />
                             </div>
                         </div>
                         <div className="reg_btn">
