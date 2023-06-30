@@ -751,3 +751,9 @@ thead {
     position: sticky;
 }
 
+.contenedor {
+    overflow-x: auto;
+    /* Habilita el desplazamiento horizontal */
+    width: 100%;
+    height: 100%;
+}
