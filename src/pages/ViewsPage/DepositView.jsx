@@ -4,11 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import { SiberBar } from '../../components/Sidebar/SiberBar'
 import { TableDeposit } from '../../components/Tables/TableDeposit'
 import { ModalDeposit } from '../../components/Modal/ModalDeposit'
+import { ModalPutDeposit } from '../Updates/ModalPutDeposit'
 
 export const DepositView = () => {
   const [deposit, setDeposit] = useState([{}])
   const navigate = useNavigate()
-  const [showModalDeposit, setShowModalDeposit ] = useState(false);
+  const [showModalDeposit, setShowModalDeposit] = useState(false);
+  const [showModalPutDeposit, setShowModalPutDeposit] = useState(false);
+  const [datos, setDatos] = useState({});
+  
 
   const getTableDeposit = async () => {
     try {
@@ -19,12 +23,31 @@ export const DepositView = () => {
     }
   }
 
-  const handleOpenModal = () =>{
-    setShowModalDeposit(true);
+  const updateData = async() =>{
+    try {
+      getTableDeposit();
+    } catch (e) {
+      console.log(e);
+    }
   }
 
-  const handleCloseModal =() => {
+  const handleOpenModal = () => {
+    setShowModalDeposit(true);
+  }
+  const handleCloseModal = () => {
     setShowModalDeposit(false);
+  }
+  const handleOpenModal2 = (id, amount) => {
+    let datos1 = {
+      id: id,
+      amount: amount
+    }
+    setDatos(datos1);
+    setShowModalPutDeposit(true);
+  }
+  const handleCloseModal2 = () => {
+    setShowModalPutDeposit(false);
+    /* getTableDeposit(); */
   }
 
   useEffect(() => getTableDeposit, [])
@@ -97,7 +120,7 @@ export const DepositView = () => {
                                     <td className='text-center align-middle'>
                                       <div className='btn-group align-top'>
                                         <div className='btn btn-sm btn-primary btn-outline-secondary badge'>
-                                          <button onClick={() => navigate(`/updateClient/${_id}`)} className='btn badge' type='button' data-toggle='modal' data-target='#user-form-modal'>
+                                          <button onClick={() => handleOpenModal2(_id, amount)} className='btn badge' type='button' data-toggle='modal' data-target='#user-form-modal'>
                                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi2 bi-pencil-square' viewBox='0 0 16 16'>
                                               <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z' />
                                               <path fillRule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z' />
@@ -129,7 +152,8 @@ export const DepositView = () => {
         </div>
       </section >
       <br />
-      <ModalDeposit isOpen={showModalDeposit} onClose={handleCloseModal}/>
+      <ModalDeposit isOpen={showModalDeposit} onClose={handleCloseModal} />
+      <ModalPutDeposit isOpen={showModalPutDeposit} onClose={handleCloseModal2} datos={datos} update={updateData}/>
     </>
   )
 }
