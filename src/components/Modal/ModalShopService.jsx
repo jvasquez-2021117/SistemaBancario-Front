@@ -9,7 +9,8 @@ export const ModalShopService = ({ isOpen, onClose, id }) => {
     const { dataUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [ accounts, setAccounts ] = useState([{}])
-    console.log(id.price);
+
+    console.log(id.id);
 
     const getAccounts = async()=>{
         try{
