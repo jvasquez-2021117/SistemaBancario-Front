@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { SiberBar } from '../../components/Sidebar/SiberBar'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { SiberBar } from '../../components/Sidebar/SiberBar';
 
 export const AddClient = () => {
 

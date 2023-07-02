@@ -1,19 +1,18 @@
-import React from 'react'
-import { useState } from 'react'
-import { SiberBar } from '../components/Sidebar/SiberBar'
-import { Index } from '../Index'
-import { TableAccountProfile } from '../components/Tables/TableAccountProfile'
 import axios from 'axios'
-import { useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { SiberBar } from '../components/Sidebar/SiberBar'
+import { TableAccountProfile } from '../components/Tables/TableAccountProfile'
+import { AuthContext } from '../Index'
 
 export const ProfileAccountsPage = () => {
 
     const [tableProfileAccount, setTableProfileAccount] = useState([{}])
     const [tableUser, setTableUser] = useState([{}])
-
+    const { dataUser } = useContext(AuthContext)
+    
     const getTableAccountProfile = async () => {
         try {
-            const { data } = await axios('http://localhost:3200/account/get')
+            const { data } = await axios(`http://localhost:3200/account/getByUser/${dataUser.id}`)
             setTableProfileAccount(data.accounts)
         } catch (e) {
             console.log(e);

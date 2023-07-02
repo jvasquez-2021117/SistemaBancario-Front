@@ -27,10 +27,7 @@ export const ModalDeposit = ({ isOpen, onClose }) => {
             })
             navigate('/deposits')
         } catch (e) {
-            Swal.fire({
-                icon: 'error',
-                title: data.message
-            })
+            console.log(e);
         }
     }
 

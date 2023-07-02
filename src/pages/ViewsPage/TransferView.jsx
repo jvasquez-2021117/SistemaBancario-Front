@@ -78,7 +78,7 @@ export const TransferView = () => {
                                                                             accountReq2={accountReq?.user.name}
                                                                             accountSender={accountSender?._id}
                                                                             accountSender2={accountSender?.user.name}
-                                                                            amount={amount}
+                                                                            amount={amount +'.00 Q'}
                                                                             date={date}
                                                                             hour={hour}
                                                                             description={description}
