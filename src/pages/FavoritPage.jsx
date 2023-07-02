@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { ModalFavorite } from '../components/Modal/ModalFavorite';
 import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../Index';
+import { ModalFavorite } from '../components/Modal/ModalFavorite';
 import { TableFavorites } from '../components/Tables/TableFavorites';
 
-
 export const FavoritPage = () => {
-    const navigate = useNavigate();
 
-    const [ showModalFav, setShowModalFav] = useState(false)
-    const [ tableFavorites, setTableFavorites ] = useState([{}])
+    const [tableFavorites, setTableFavorites] = useState([{}])
+    const [showModalFav, setShowModalFav] = useState(false)
+    const { dataUser } = useContext(AuthContext);
 
-    const handleOpenModal = () => {
-        setShowModalFav(true);
-        console.log(showModalFav);
-    }
-    const handleCloseModal = () => {
-        setShowModalFav(false);
-    }
-
-    const getTableFavorites = async() =>{
+    const getTableFavorites = async () => {
         try {
-            const { data } = await axios('http://localhost:3200/favorite/get')
+            const { data } = await axios(`http://localhost:3200/favorite/getById/${dataUser.id}`)
             setTableFavorites(data.favorites)
         } catch (e) {
             console.log(e);
         }
+    }
+
+    const handleOpenModal = () => {
+        setShowModalFav(true);
+    }
+    const handleCloseModal = () => {
+        setShowModalFav(false);
     }
 
     useEffect(() => getTableFavorites, [])
@@ -63,18 +61,18 @@ export const FavoritPage = () => {
                 </div>
             </div>
             {
-                tableFavorites.map(({_id, nickName, accountFav}, i) => {
-                    return(
-                        <div key={i}>
+                tableFavorites.map(({ _id, nickName, accountFav }, index) => {
+                    return (
+                        <div key={index}>
                             <TableFavorites
-                            nickName={nickName}
-                            accountFav={accountFav}
+                                nickName={nickName}
+                                accountFav={accountFav}
                             ></TableFavorites>
                         </div>
                     )
                 })
             }
-            <ModalFavorite isOpen={showModalFav} onClose={handleCloseModal}/>
+            <ModalFavorite isOpen={showModalFav} onClose={handleCloseModal} />
         </>
     )
 }

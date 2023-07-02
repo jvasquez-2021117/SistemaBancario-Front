@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../Index'
 import { SiberBar } from '../components/Sidebar/SiberBar'
 import { TableAccountProfile } from '../components/Tables/TableAccountProfile'
-import { AuthContext } from '../Index'
 
 export const ProfileAccountsPage = () => {
 
