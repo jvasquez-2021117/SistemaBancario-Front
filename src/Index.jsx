@@ -135,10 +135,6 @@ export const Index = () => {
                     element: <DepositView />
                 },
                 {
-                    path: '/updateDeposit/:id',
-                    element: <UpdateDeposit />
-                },
-                {
                     path: '/ProfileAccountUser',
                     element: <ProfileAccountsPage />
                 },

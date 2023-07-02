@@ -1,14 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import { AuthContext } from '../../Index';
 
 export const ModalFavorite = ({ isOpen, onClose }) => {
-    const navigate = useNavigate();
+
+    const { dataUser } = useContext(AuthContext)
 
     const [form, setForm] = useState({
+        owner: dataUser.id,
         nickName: '',
         dpi: '',
         accountFav: ''
