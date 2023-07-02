@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { SiberBar } from '../../components/Sidebar/SiberBar'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { TableProduct } from '../../components/Tables/TableProduct'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { ModalProduct } from '../../components/Modal/ModalProduct'
+import { ModalBuyProducts } from '../components/Modal/ModalBuyProducts'
+import { SiberBar } from '../components/Sidebar/SiberBar'
+import { TableProduct } from '../components/Tables/TableProduct'
 
-export const ProductsView = () => {
-    const navigate = useNavigate()
+export const BuyProductPage = () => {
+
     const [products, setProducts] = useState([{}])
     const [tableProducts, setTableProducts] = useState([{}])
     const [search, setSearch] = useState("")
-    const [showModalProduct, setShowModalProduct] = useState(false);
+    const [showModalProduct, setShowModalProduct] = useState(false)
+    const [buyProduct, setBuyProduct] = useState({})
 
     const getTableProducts = async () => {
         try {
@@ -36,38 +37,18 @@ export const ProductsView = () => {
         setProducts(resultSearch)
     }
 
-    const deleteProducts = async (id) => {
-        try {
-            Swal.fire({
-                title: 'Do you want to delete this record?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then(async (result) => {
-                if (result.isConfirmed) {
-                    const { data } = await axios.delete(`http://localhost:3200/product/delete/${id}`);
-                    getTableProducts();
-                    Swal.fire(
-                        data.message,
-                        '',
-                        'success'
-                    );
-                }
-            });
-        } catch (e) {
-            console.log(e);
+    const handleOpenModal = (id, name, price) => {
+        let product = {
+            id: id,
+            name: name,
+            price: price
         }
-    }
-
-    const handleOpenModal = () => {
-        setShowModalProduct(true);
+        setBuyProduct(product)
+        setShowModalProduct(true)
     }
 
     const handleCloseModal = () => {
-        setShowModalProduct(false);
+        setShowModalProduct(false)
     }
 
     useEffect(() => getTableProducts, [])
@@ -78,7 +59,7 @@ export const ProductsView = () => {
             <nav className='navbar navbar-expand-lg navbar-light' style={{ marginTop: '6rem' }}>
                 <div className='container-fluid'>
                     <div className='collapse navbar-collapse justify-content-center' id='navbarCenteredExample' >
-                        <h1 className='text-black' style={{ fontSize: '2.5rem' }}>VIEW PRODUCTS</h1>
+                        <h1 className='text-black' style={{ fontSize: '2.5rem' }}>BUY PRODUCTS</h1>
                     </div>
                 </div>
             </nav>
@@ -90,20 +71,10 @@ export const ProductsView = () => {
                             <div className="row1">
                                 <input type="text" id='inputSearch' placeholder='Search' value={search} onChange={handleChangeSearch} />
                                 <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-search bi-solid" viewBox="0 0 16 25">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" className="bi bi-search bi-solid" viewBox="0 0 16 25">
                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                     </svg>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-2 col-lg-2">
-                        <div className="row">
-                            <div className="col1">
-                                {/* <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>
-                                Exit
-                            </button> */}
-                                <a href="#" onClick={handleOpenModal} className='btn1'>Add</a>
                             </div>
                         </div>
                     </div>
@@ -134,22 +105,14 @@ export const ProductsView = () => {
                                                                     <tr key={index}>
                                                                         <TableProduct
                                                                             name={name}
-                                                                            price={price}
+                                                                            price={price + '.00 Q'}
                                                                         ></TableProduct>
                                                                         <td className="text-center align-middle">
                                                                             <div className="btn-group align-top">
                                                                                 <div className="btn btn-sm btn-primary btn-outline-secondary badge">
-                                                                                    <button onClick={() => navigate(`/updateProduct/${_id}`)} className="btn badge" type="button" data-toggle="modal" data-target="#user-form-modal">
-                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi2 bi-pencil-square" viewBox="0 0 16 16">
-                                                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                                            <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                                                        </svg>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div className="btn btn-sm btn-danger btn-outline-secondary badge">
-                                                                                    <button onClick={() => deleteProducts(_id)} className="btn badge" type="button">
-                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi2 bi-trash-fill" viewBox="0 0 16 16">
-                                                                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                                                                    <button onClick={() => handleOpenModal(_id, name, price)} className="btn badge" type="button" data-toggle="modal" data-target="#user-form-modal">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bag" viewBox="0 0 16 16">
+                                                                                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                                                                                         </svg>
                                                                                     </button>
                                                                                 </div>
@@ -171,7 +134,7 @@ export const ProductsView = () => {
                 </div>
             </section >
             <br />
-            <ModalProduct isOpen={showModalProduct} onClose={handleCloseModal}/>
+            <ModalBuyProducts isOpen={showModalProduct} onClose={handleCloseModal} id={buyProduct} />
         </>
     )
 }

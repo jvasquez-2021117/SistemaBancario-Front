@@ -25,6 +25,12 @@ export const LoginPage = () => {
         try {
             e.preventDefault()
             const { data } = await axios.post('http://localhost:3200/user/login', form)
+            if (!data.username || !data.password) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Check that all fields are complete'
+                })
+            }
             if (data.token) {
                 setLoggedIn(true)
                 localStorage.setItem('token', data.token)
@@ -46,14 +52,11 @@ export const LoginPage = () => {
                 })
                 navigate('/profile')
             }
-            if (data.message == 'Check that all fields are complete') {
-                Swal.fire({
-                    icon: 'error',
-                    title: data.message,
-                })
-            }
         } catch (err) {
-            console.log(err)
+            Swal.fire({
+                icon: 'error',
+                title: err.response.data.message,
+            })
         }
     }
 
@@ -62,8 +65,8 @@ export const LoginPage = () => {
             <div className="split-screen a b">
                 <div className="left">
                     <section className="copy">
-                        <h1 style={{fontSize: 80}}>CashTrust</h1>
-                        <p style={{fontSize: 30}} >Sistema Bancario</p>
+                        <h1 style={{ fontSize: 80 }}>CashTrust</h1>
+                        <p style={{ fontSize: 30 }} >Sistema Bancario</p>
                     </section>
                 </div>
                 <div className="right">

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { SiberBar } from '../../components/Sidebar/SiberBar'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Modal } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
-export const AddAccounts = () => {
-
+export const ModalAccount = ({ isOpen, onClose }) => {
+    const navigate = useNavigate();
     const [typeAccount, setTypeAccount] = useState([{}]);
     const [user, setUser] = useState([{}]);
-    const navigate = useNavigate();
+
 
     const getTypeAccount = async () => {
         try {
@@ -35,22 +36,31 @@ export const AddAccounts = () => {
             }
             console.log(add);
             const { data } = await axios.post('http://localhost:3200/account/add', add);
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
-            console.log(e);
+            Swal.fire({
+                icon: 'error',
+                title: data.message
+            })
         }
     }
 
     useEffect(() => { getTypeAccount(), getUsers() }, []);
 
+
     return (
         <>
-            <SiberBar></SiberBar>
-            <div className="mother">
-                <div className="container1">
-                    <div className="title">
-                        <p>Add Account</p>
-                    </div>
+            <Modal show={isOpen}>
+                <Modal.Header>
+                    <Modal.Title className='text-dark'>Deposit</Modal.Title>
+                    <button onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </Modal.Header>
+                <Modal.Body>
                     <form action="#">
                         <div className="user_details">
                             <div className="input_box">
@@ -81,18 +91,11 @@ export const AddAccounts = () => {
                             </div>
                         </div>
                         <div className="reg_btn">
-                            <div className="row">
-                                <div className="col">
-                                    <button type='button' onClick={() => addAccount()} className='btn btn-primary' style={{ backgroundColor: '#2c4893' }}>AddAccount</button>
-                                </div>
-                                <div className="col reg_btnC">
-                                    <button type='button' onClick={() => navigate('/account')} className='btn btn-primary' style={{ backgroundColor: '#2c4893' }}>Cancel</button>
-                                </div>
-                            </div>
+                            <button type='button' onClick={() => addAccount()} className='btn btn-primary' style={{ backgroundColor: '#2c4893' }}>AddAccount</button>
                         </div>
                     </form>
-                </div>
-            </div>
+                </Modal.Body>
+            </Modal>
         </>
     )
 }

@@ -59,6 +59,11 @@ export const Navbar = () => {
                                             Home
                                         </Link>
                                     </li>
+                                    <li className='nav-item'>
+                                        <Link to={'/buyProducts'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
+                                            Buy Products
+                                        </Link>
+                                    </li>
                                 </ul>
                             ) : <></>
                         }
