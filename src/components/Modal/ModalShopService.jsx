@@ -9,41 +9,34 @@ export const ModalShopService = ({ isOpen, onClose, id }) => {
     const { dataUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [ accounts, setAccounts ] = useState([{}])
+    console.log(id.price);
 
     const getAccounts = async()=>{
         try{
             const { data } = await axios(`http://localhost:3200/account/getByUser/${dataUser.id}`)
             setAccounts(data.accounts);
+            console.log(data.accounts);
         }catch(e){
             console.log(e);
         }
         console.log(id);
     }
 
-    const [form, setForm] = useState({
-        service: `${id}`,
-        account: ''
-    })
-
-    const createHandleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        })
-    }
-
     const create = async () => {
         try {
-            const { data } = await axios.post('http://localhost:3200/shopService/buyService', form)
+            let add = {
+                service: id,
+                account: document.getElementById('inputAccount').value
+            }
+            console.log(id);
+            console.log(add);
+            const { data } = await axios.post('http://localhost:3200/shopService/buyService', add)
             Swal.fire({
                 icon: 'success',
                 title: data.message
             })
         } catch (e) {
-            Swal.fire({
-                icon: 'error',
-                title: data.message
-            })
+            console.log(e);
         }
     }
 
@@ -56,22 +49,24 @@ export const ModalShopService = ({ isOpen, onClose, id }) => {
         <>
             <Modal show={isOpen}>
                 <Modal.Header>
-                    <Modal.Title className='text-dark'>{id.name}</Modal.Title>
+                    <Modal.Title className='text-dark'>Confirm shop</Modal.Title>
                     <button  onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </Modal.Header>
                 <Modal.Body>
+                    <br />
+                    <h2 className='text-center'>{id.name + '  -  Q' + id.price}</h2>
                     <form action="#">
                         <div className="user_details">
-                            <div className="input_box">
-                                <label htmlFor="inputName">Account</label>
-                                <select className='form-select' id='inputTypeAccount'>
+                            <div className="textarea_box" style={{width: '100%'}}>
+                                <label htmlFor="inputAccount">Account</label>
+                                <select className='form-select' id='inputAccount'>
                                     <option defaultValue={'Enter your account for pay'}>Open this select menu</option>
                                     {
                                         accounts.map(({ _id, balances, typeAccount, state }, i) => {
                                             return (
-                                                <option key={i} value={_id} className=''>{ 'No. Account:' + ' ' + _id + ' | ' + 'Balance:' + ' ' + balances}</option>
+                                                <option key={i} value={_id} className=''>{ 'No. Account:' + ' ' + _id + ' | ' + 'Balance:' + ' Q' + balances}</option>
                                             )
                                         })
                                     }

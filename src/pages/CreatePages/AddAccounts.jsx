@@ -33,6 +33,7 @@ export const AddAccounts = () => {
                 typeAccount: document.getElementById('inputTypeAccount').value,
                 user: document.getElementById('inputUser').value
             }
+            console.log(add);
             const { data } = await axios.post('http://localhost:3200/account/add', add);
             alert(data.message)
         } catch (e) {

@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 export const ModalTransder = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
-
+    
     const [form, setForm] = useState({
         accountReq: '',
         accountSender: '',
