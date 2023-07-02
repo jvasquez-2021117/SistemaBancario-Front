@@ -25,6 +25,7 @@ import { AccountView } from './pages/ViewsPage/AccountView'
 import { FavoritPage } from './pages/FavoritPage'
 import { RecordPage } from './pages/RecordPage'
 import { HistoryView } from './pages/ViewsPage/HistoryView'
+import { UpdateDeposit } from './pages/Updates/UpdateDeposit'
 
 
 export const AuthContext = createContext();
@@ -133,6 +134,10 @@ export const Index = () => {
                 {
                     path: '/deposits',
                     element: <DepositView />
+                },
+                {
+                    path: '/updateDeposit/:id',
+                    element: <UpdateDeposit />
                 },
                 {
                     path: '/ProfileAccountUser',
