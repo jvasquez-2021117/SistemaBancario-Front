@@ -765,6 +765,12 @@ thead {
     position: sticky;
 }
 
+.box-shadow {
+    -webkit-box-shadow: 4px -1px 33px -15px rgba(1, 2, 20, 1);
+    -moz-box-shadow: 4px -1px 33px -15px rgba(1, 2, 20, 1);
+    box-shadow: 4px -1px 33px -15px rgba(1, 2, 20, 1);
+}
+
 .contenedor {
     overflow-x: auto;
     /* Habilita el desplazamiento horizontal */

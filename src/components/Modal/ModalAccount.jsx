@@ -34,6 +34,7 @@ export const ModalAccount = ({ isOpen, onClose }) => {
                 typeAccount: document.getElementById('inputTypeAccount').value,
                 user: document.getElementById('inputUser').value
             }
+            console.log(add);
             const { data } = await axios.post('http://localhost:3200/account/add', add);
             Swal.fire({
                 icon: 'success',
