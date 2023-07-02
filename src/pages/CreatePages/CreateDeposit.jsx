@@ -29,10 +29,7 @@ export const CreateDeposit = () => {
             })
             navigate('/deposits')
         } catch (e) {
-            Swal.fire({
-                icon: 'error',
-                title: data.message
-            })
+            console.log(e);
         }
     }
     return (

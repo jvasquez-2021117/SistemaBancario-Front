@@ -35,13 +35,13 @@ export const AccountView = () => {
     }
 
     const sortTableByMovementsAscendt = () => {
-        const sortedTable = [...tableAccount].sort((a, b) => b.movements - a.movements);
-        setTableAccount(sortedTable)
+        const sortedTable = [...accounts].sort((a, b) => b.movements - a.movements);
+        setAccounts(sortedTable)
     }
 
     const sortTableByMovementsDescendt = () => {
-        const sortedTable = [...tableAccount].sort((a, b) => a.movements - b.movements);
-        setTableAccount(sortedTable)
+        const sortedTable = [...accounts].sort((a, b) => a.movements - b.movements);
+        setAccounts(sortedTable)
     }
 
     useEffect(() => {
@@ -115,7 +115,7 @@ export const AccountView = () => {
                                                                     <tr key={i}>
                                                                         <TableAccount
                                                                             _id={_id}
-                                                                            balances={balances}
+                                                                            balances={balances + '.00 Q'}
                                                                             typeAccount={typeAccount?.name}
                                                                             state={state}
                                                                             user={user?.username}

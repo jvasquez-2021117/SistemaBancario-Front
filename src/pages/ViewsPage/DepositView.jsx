@@ -80,7 +80,7 @@ export const DepositView = () => {
                                     <TableDeposit
                                       accountReq={accountReq?._id}
                                       accountReq2={accountReq?.user.name}
-                                      amount={amount}
+                                      amount={amount + '.00 Q'}
                                       date={date}
                                       hour={hour}
                                     ></TableDeposit>
