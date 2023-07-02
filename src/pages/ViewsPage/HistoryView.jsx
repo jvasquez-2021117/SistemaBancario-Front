@@ -117,53 +117,48 @@ export const HistoryView = () => {
                                     <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DATE</th>
                                     <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >HOUR</th>
                                   </>
-                                :
-                                showTransfer ? 
-                                  <>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >ACCOUNT SENDER</th>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >ACCOUNT REQ</th>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >AMOUNT</th>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DATE</th>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >HOUR</th>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DESCRIPTION</th>
-                                  </>
-                                : <></> 
+                                  :
+                                  showTransfer ?
+                                    <>
+                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >ACCOUNT SENDER</th>
+                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >ACCOUNT REQ</th>
+                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >AMOUNT</th>
+                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DATE</th>
+                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >HOUR</th>
+                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DESCRIPTION</th>
+                                    </>
+                                    : <></>
                               }
                             </tr>
                           </thead>
                           <tbody>
                             {
-                              
-                              showDeposit ? 
-                              
-                              data.map(({ _id, deposit }, i) => {
-                                return (
-                                  
-                                  <tr key={i}>
-                                         <td>{deposit?._id}</td>
-                                          <td>{deposit?.amount}</td>
-                                          <td>{deposit?.date}</td>
-                                          <td>{deposit?.hour}</td>
-                                  </tr>
-                                )
-                              })
-                             : showTransfer ?
-                              data.map(({_id, transfer}, i) => {
-                                return (
-                                  <tr key={i}>
-                                    <td>{transfer?.accountSender}</td>
-                                    <td>{transfer?.accountReq}</td>
-                                    <td>{transfer?.amount}</td>
-                                    <td>{transfer?.date}</td>
-                                    <td>{transfer?.hour}</td>
-                                    <td>{transfer?.description}</td>
-                                  </tr>
-                                )
-                              })
-                             : <></>
-
+                              showDeposit ?
+                                data.map(({ _id, deposit }, i) => {
+                                  return (
+                                    <tr key={i}>
+                                      <td>{deposit?._id}</td>
+                                      <td>{deposit?.amount}</td>
+                                      <td>{deposit?.date}</td>
+                                      <td>{deposit?.hour}</td>
+                                    </tr>
+                                  )
+                                })
+                                : showTransfer ?
+                                  data.map(({ _id, transfer }, i) => {
+                                    return (
+                                      <tr key={i}>
+                                        <td>{transfer?.accountSender}</td>
+                                        <td>{transfer?.accountReq}</td>
+                                        <td>{transfer?.amount}</td>
+                                        <td>{transfer?.date}</td>
+                                        <td>{transfer?.hour}</td>
+                                        <td>{transfer?.description}</td>
+                                      </tr>
+                                    )
+                                  })
+                                  : <></>
                             }
-
                           </tbody>
                         </table>
                       </div>

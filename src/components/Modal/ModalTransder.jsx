@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Modal, ModalBody, ModalHeader, ModalTitle } from 'react-bootstrap';
+import { Modal} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 
@@ -29,6 +29,7 @@ export const ModalTransder = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            navigate('/ProfileAccountUser')
         } catch (e) {
             Swal.fire({
                 icon: 'error',
