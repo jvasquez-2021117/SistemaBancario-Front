@@ -26,7 +26,7 @@ export const ModalShopService = ({ isOpen, onClose, id }) => {
     const create = async () => {
         try {
             let add = {
-                service: id,
+                service: id.id,
                 account: document.getElementById('inputAccount').value
             }
             console.log(id);

@@ -62,6 +62,14 @@ export const ProductsView = () => {
         }
     }
 
+    const updateData = async () => {
+        try {
+            getTableProducts();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const handleOpenModal = () => {
         setShowModalProduct(true);
     }
@@ -100,9 +108,6 @@ export const ProductsView = () => {
                     <div className="col-md-2 col-lg-2">
                         <div className="row">
                             <div className="col1">
-                                {/* <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>
-                                Exit
-                            </button> */}
                                 <a href="#" onClick={handleOpenModal} className='btn1'>Add</a>
                             </div>
                         </div>
@@ -171,7 +176,7 @@ export const ProductsView = () => {
                 </div>
             </section >
             <br />
-            <ModalProduct isOpen={showModalProduct} onClose={handleCloseModal}/>
+            <ModalProduct isOpen={showModalProduct} onClose={handleCloseModal} update={updateData}/>
         </>
     )
 }

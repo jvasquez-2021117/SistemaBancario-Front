@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-export const ModalDeposit = ({ isOpen, onClose }) => {
+export const ModalDeposit = ({ isOpen, onClose, update }) => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -25,9 +26,13 @@ export const ModalDeposit = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
-            navigate('/deposits')
+            update();
+            onClose();
         } catch (e) {
-            console.log(e);
+            Swal.fire({
+                icon: 'error',
+                title: data.message
+            })
         }
     }
 

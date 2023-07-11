@@ -7,7 +7,6 @@ import Swal from 'sweetalert2'
 
 export const ModalPutDeposit = ({ isOpen, onClose, datos, update}) => {
     const navigate = useNavigate();
-    const [isUpdated, setIsUpdated] = useState(false);
 
 
     const updateDeposit = async () => {
@@ -20,8 +19,8 @@ export const ModalPutDeposit = ({ isOpen, onClose, datos, update}) => {
                 icon: 'success',
                 title: data.message,
             })
-            setIsUpdated(true);
             update();
+            onClose();
         } catch (e) {
             Swal.fire({
                 icon: 'error',
@@ -30,7 +29,7 @@ export const ModalPutDeposit = ({ isOpen, onClose, datos, update}) => {
         }
     }
 
-    if (!isOpen || isUpdated) {
+    if (!isOpen) {
         return null
     }
 
