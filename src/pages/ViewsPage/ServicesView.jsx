@@ -44,6 +44,13 @@ export const ServicesView = () => {
         setServices(resultSearch)
     }
 
+    const  updateDate = async() =>{
+        try {
+            getTableServices();
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     const deleteServices = async (id) => {
         try {
@@ -171,7 +178,7 @@ export const ServicesView = () => {
                 </div>
             </section >
             <br />
-            <ModalService isOpen={showModalServices} onClose={handleCloseModal}/>
+            <ModalService isOpen={showModalServices} onClose={handleCloseModal} update={updateDate}/>
         </>
     )
 }

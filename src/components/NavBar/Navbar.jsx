@@ -64,16 +64,14 @@ export const Navbar = () => {
                                             Buy Products
                                         </Link>
                                     </li>
-                                </ul>
-                            ) : <></>
-                        }
-                        <ul className='navbar-nav ms-auto '>
                                     <li className='nav-item'>
                                         <Link to={'/shopService'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
-                                            Home
+                                            Buy Services
                                         </Link>
                                     </li>
                                 </ul>
+                            ) : <></>
+                        }
                         {
                             loggedIn == true ? (
                                 <div className='dropdown'>
@@ -85,6 +83,7 @@ export const Navbar = () => {
                                         <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
                                         <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
                                         <a href="#" className='dropdown-item' onClick={() => navigate('/favorite')}>Favorites</a>
+                                        <a href="#" className='dropdown-item' onClick={() => navigate('/history')}>History</a>
                                         <p onClick={() => logOut()} className='dropdown-item' id='logU'>LogOut</p>
                                     </div>
                                 </div>

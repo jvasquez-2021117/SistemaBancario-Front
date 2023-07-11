@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Index'
-import { SiberBar } from '../components/Sidebar/SiberBar'
 import { TableAccountProfile } from '../components/Tables/TableAccountProfile'
 
 export const ProfileAccountsPage = () => {
@@ -23,7 +22,6 @@ export const ProfileAccountsPage = () => {
 
     return (
         <>
-            <SiberBar />
             <nav className='navbar navbar-expand-lg navbar-light' style={{ marginTop: '6rem' }}>
                 <div className='container-fluid'>
                     <div className='collapse navbar-collapse justify-content-center' id='navbarCenteredExample' >
