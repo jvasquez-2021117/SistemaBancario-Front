@@ -38,7 +38,7 @@ export const ProfilePage = () => {
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputPhone">Phone Number</label>
-                                <input type="number" id="inputPhone" placeholder="Enter your number" defaultValue={queryParams.phone || dataUser.phone} name='phone' readOnly />
+                                <input type="text" id="inputPhone" placeholder="Enter your number" defaultValue={queryParams.phone || dataUser.phone} name='phone' readOnly />
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputSalary">Salary</label>
@@ -46,7 +46,7 @@ export const ProfilePage = () => {
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputDPI">DPI</label>
-                                <input type="number" id="inputDPI" placeholder="Enter your DPI" defaultValue={dataUser.DPI} name='DPI' readOnly />
+                                <input type="text" id="inputDPI" placeholder="Enter your DPI" defaultValue={dataUser.DPI} name='DPI' readOnly />
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputWork">Name work</label>
