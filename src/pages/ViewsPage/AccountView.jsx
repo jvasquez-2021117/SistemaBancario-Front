@@ -54,6 +54,14 @@ export const AccountView = () => {
         setAccounts(sortedTable)
     }
 
+    const updateData = async () =>{
+        try {
+            getTableAccount();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const deleteAccount = async (id) => {
         try {
             Swal.fire({
@@ -128,7 +136,7 @@ export const AccountView = () => {
                         <div className='container'>
                             <div className='row justify-content-center'>
                                 <div className='col-12'>
-                                    <div className='card'>
+                                    <div className='card box-shadow'>
                                         <div className='card-body p-0'>
                                             <div className='table-responsive table-scroll' data-mdb-perfect-scrollbar='true' style={{ position: 'relative', height: '700px' }}>
                                                 <table className='table table-striped '>
@@ -185,7 +193,7 @@ export const AccountView = () => {
                 </div>
             </section >
             <br />
-            <ModalAccount isOpen={showModalAccount} onClose={handleCloseModal} />
+            <ModalAccount isOpen={showModalAccount} onClose={handleCloseModal} update={updateData}/>
         </>
     )
 }

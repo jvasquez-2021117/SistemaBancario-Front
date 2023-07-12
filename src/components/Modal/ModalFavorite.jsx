@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Index';
 
-export const ModalFavorite = ({ isOpen, onClose }) => {
+export const ModalFavorite = ({ isOpen, onClose, update }) => {
 
     const { dataUser } = useContext(AuthContext)
 
@@ -30,6 +30,8 @@ export const ModalFavorite = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            update();
+            onClose();
         } catch (e) {
             Swal.fire({
                 icon: 'error',

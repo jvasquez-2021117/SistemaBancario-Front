@@ -71,7 +71,7 @@ export const TypeAccountsView = () => {
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-6">
-                                    <div className="card">
+                                    <div className="card box-shadow">
                                         <div className="card-body p-0">
                                             <div className="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style={{ position: 'relative', height: '500px' }}>
                                                 <table className="table table-striped ">

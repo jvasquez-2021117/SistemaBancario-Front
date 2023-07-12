@@ -44,6 +44,13 @@ export const ServicesView = () => {
         setServices(resultSearch)
     }
 
+    const  updateDate = async() =>{
+        try {
+            getTableServices();
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     const deleteServices = async (id) => {
         try {
@@ -113,7 +120,7 @@ export const ServicesView = () => {
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-6">
-                                    <div className="card">
+                                    <div className="card box-shadow">
                                         <div className="card-body p-0">
                                             <div className="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style={{ position: 'relative', height: '500px' }}>
                                                 <table className="table table-striped">
@@ -168,7 +175,7 @@ export const ServicesView = () => {
                 </div>
             </section >
             <br />
-            <ModalService isOpen={showModalServices} onClose={handleCloseModal} />
+            <ModalService isOpen={showModalServices} onClose={handleCloseModal} update={updateDate}/>
         </>
     )
 }
