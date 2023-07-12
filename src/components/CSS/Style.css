@@ -472,7 +472,7 @@ label {
 }
 
 
-.user_details{
+.user_details {
     width: 100%;
 }
 
@@ -834,10 +834,12 @@ thead {
 .heading a.continue:active {
     background: #f69679;
 }
-.heading2{
+
+.heading2 {
     margin-bottom: 0.5em;
     margin-top: 1em;
 }
+
 .heading2 a.continue:link,
 .heading2 a.continue:visited {
     text-decoration: none;
@@ -850,6 +852,7 @@ thead {
     border-radius: 50px;
     float: right;
 }
+
 .heading2 a.continue:hover,
 .heading2 a.continue:focus,
 .heading2 a.continue:active {
@@ -900,11 +903,11 @@ thead {
     vertical-align: middle;
 }
 
-.tt{
+.tt {
     font-size: 1.55rem;
     color: #333;
     margin-top: 0.2em;
-    margin-left: 2em;    
+    margin-left: 2em;
     display: inline-block;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -969,3 +972,4 @@ thead {
         text-align: center;
     }
 }
+

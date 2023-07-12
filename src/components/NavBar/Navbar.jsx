@@ -84,6 +84,7 @@ export const Navbar = () => {
                                         <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
                                         <a href="#" className='dropdown-item' onClick={() => navigate('/favorite')}>Favorites</a>
                                         <a href="#" className='dropdown-item' onClick={() => navigate('/history')}>History</a>
+                                        <a href="#" className='dropdown-item' onClick={() => navigate('/change')}>Change</a>
                                         <p onClick={() => logOut()} className='dropdown-item' id='logU'>LogOut</p>
                                     </div>
                                 </div>
