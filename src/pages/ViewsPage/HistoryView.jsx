@@ -95,7 +95,6 @@ export const HistoryView = () => {
 
   return (
     <>
-      <SiberBar />
       <nav className='navbar navbar-expand-lg navbar-light' style={{ marginTop: '6rem' }}>
         <div className='container-fluid'>
           <div className='collapse navbar-collapse justify-content-center' id='navbarCenteredExample' >
@@ -117,7 +116,7 @@ export const HistoryView = () => {
           </div>
         </div>
       </div>
-      <section className='intro' style={{marginTop: '3rem'}}>
+      <section className='intro' style={{ marginTop: '3rem' }}>
         <div className='bg-image h-100' style={{ backgroundColor: '#f5f7fa', marginTop: '1.5rem' }}>
           <div className='mask d-flex align-items-center h-100'>
             <div className='container'>
