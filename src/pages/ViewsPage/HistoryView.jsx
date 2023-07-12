@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SiberBar } from '../../components/Sidebar/SiberBar'
-import { TableDeposit } from '../../components/Tables/TableDeposit'
 import { AuthContext } from '../../Index'
 
 export const HistoryView = () => {
@@ -13,7 +12,6 @@ export const HistoryView = () => {
   const [showServices, setShowServices] = useState(false);
   const [title, setTitle] = useState('History');
 
-  const navigate = useNavigate();
   const { dataUser } = useContext(AuthContext)
 
   const getDeposit = async (activate2) => {
