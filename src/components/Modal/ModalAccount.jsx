@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-export const ModalAccount = ({ isOpen, onClose }) => {
+export const ModalAccount = ({ isOpen, onClose, update }) => {
     const navigate = useNavigate();
     const [typeAccount, setTypeAccount] = useState([{}]);
     const [user, setUser] = useState([{}]);
@@ -40,6 +40,8 @@ export const ModalAccount = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            update();
+            onClose();
         } catch (e) {
             Swal.fire({
                 icon: 'error',

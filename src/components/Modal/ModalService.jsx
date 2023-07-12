@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-export const ModalService = ({ isOpen, onClose }) => {
+export const ModalService = ({ isOpen, onClose, update }) => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -26,9 +26,13 @@ export const ModalService = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
-            navigate('/services')
+            update();
+            onClose();
         } catch (e) {
-            console.log(e);
+            Swal.fire({
+                icon: 'error',
+                title: data.message
+            })
         }
     }
 

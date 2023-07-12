@@ -54,6 +54,14 @@ export const AccountView = () => {
         setAccounts(sortedTable)
     }
 
+    const updateData = async () =>{
+        try {
+            getTableAccount();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const deleteAccount = async (id) => {
         try {
             Swal.fire({
@@ -184,7 +192,7 @@ export const AccountView = () => {
                 </div>
             </section >
             <br />
-            <ModalAccount isOpen={showModalAccount} onClose={handleCloseModal}/>
+            <ModalAccount isOpen={showModalAccount} onClose={handleCloseModal} update={updateData}/>
         </>
     )
 }
