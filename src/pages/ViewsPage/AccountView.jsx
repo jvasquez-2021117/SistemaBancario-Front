@@ -12,12 +12,12 @@ export const AccountView = () => {
     const [tableAccount, setTableAccount] = useState([{}]);
     const [accounts, setAccounts] = useState([{}])
     const [search, setSearch] = useState("")
-    const [ showModalAccount, setShowModalAccount] = useState(false)
+    const [showModalAccount, setShowModalAccount] = useState(false)
 
-    const handleOpenModal = () =>{
+    const handleOpenModal = () => {
         setShowModalAccount(true);
     }
-    const handleCloseModal = () =>{
+    const handleCloseModal = () => {
         setShowModalAccount(false);
     }
 
@@ -110,17 +110,18 @@ export const AccountView = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-lg-2">
+
+                    <div className="col-md-2 col-lg-4">
                         <div className="row">
-                            <div className="col1">
-                                <a href="#" onClick={handleOpenModal} className='btn1'>CREATE</a>
-                                <a href="#" onClick={() => sortTableByMovementsAscendt()} className='btn1'>DESCENDETE</a>
-                                <a href="#" onClick={() => sortTableByMovementsDescendt()} className='btn1'>ASCENDETE</a>
+                            <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                                <button onClick={handleOpenModal} className='btn btn-primary' style={{ width: '32%' }}>CREATE</button>
+                                <button onClick={() => sortTableByMovementsAscendt()} className='btn btn-primary' style={{ width: '32%' }} > DESCENDETE</button>
+                                <button onClick={() => sortTableByMovementsDescendt()} className='btn btn-primary' style={{ width: '32%' }}> ASCENDETE</button>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
             <section className='intro'>
                 <div className='bg-image h-100' style={{ backgroundColor: '#f5f7fa', marginTop: '1.5rem' }}>
                     <div className='mask d-flex align-items-center h-100'>
@@ -148,9 +149,9 @@ export const AccountView = () => {
                                                             accounts.map(({ _id, balances, typeAccount, state, user, dpi, movements }, i) => {
                                                                 return (
                                                                     <tr key={i}>
-                                                                        <TableAccount
+                                                                        <TableAccount 
                                                                             _id={_id}
-                                                                            balances={balances + '.00 Q'}
+                                                                            balances={balances + '.00 Q '}
                                                                             typeAccount={typeAccount?.name}
                                                                             state={state}
                                                                             user={user?.username}
@@ -184,7 +185,7 @@ export const AccountView = () => {
                 </div>
             </section >
             <br />
-            <ModalAccount isOpen={showModalAccount} onClose={handleCloseModal}/>
+            <ModalAccount isOpen={showModalAccount} onClose={handleCloseModal} />
         </>
     )
 }

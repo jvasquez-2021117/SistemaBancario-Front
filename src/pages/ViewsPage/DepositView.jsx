@@ -12,7 +12,7 @@ export const DepositView = () => {
   const [showModalDeposit, setShowModalDeposit] = useState(false);
   const [showModalPutDeposit, setShowModalPutDeposit] = useState(false);
   const [datos, setDatos] = useState({});
-  
+
 
   const getTableDeposit = async () => {
     try {
@@ -23,7 +23,7 @@ export const DepositView = () => {
     }
   }
 
-  const updateData = async() =>{
+  const updateData = async () => {
     try {
       getTableDeposit();
     } catch (e) {
@@ -76,10 +76,10 @@ export const DepositView = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-2 col-lg-2">
+          <div className="col-md-2 col-lg-4">
             <div className="row">
-              <div className="col1">
-                <a href="#" onClick={handleOpenModal} className='btn1'>CREATE</a>
+              <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                <a href="#" onClick={handleOpenModal} className='btn btn-primary' style={{ width: '20%' }}>CREATE</a>
               </div>
             </div>
           </div>
@@ -153,7 +153,7 @@ export const DepositView = () => {
       </section >
       <br />
       <ModalDeposit isOpen={showModalDeposit} onClose={handleCloseModal} />
-      <ModalPutDeposit isOpen={showModalPutDeposit} onClose={handleCloseModal2} datos={datos} update={updateData}/>
+      <ModalPutDeposit isOpen={showModalPutDeposit} onClose={handleCloseModal2} datos={datos} update={updateData} />
     </>
   )
 }

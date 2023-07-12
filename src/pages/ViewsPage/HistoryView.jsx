@@ -83,21 +83,23 @@ export const HistoryView = () => {
           </div>
         </div>
       </nav>
+
       <div className="container t">
         <div className="row d-flex justify-content-center ">
-          <div className="col-md-2 col-lg-5">
+          <div className="col-md-2 col-lg-4">
             <div className="row">
-              <div className="col1">
-                <a href="#" onClick={() => getDeposit('showDeposit', this)} className='btn1' >Deposit</a>
-                <a href="#" onClick={() => getTransfer('showTransfer', this)} className='btn1'>Transfer</a>
-                <a href="#" onClick={() => navigate('/createDeposit')} className='btn1'>Products</a>
-                <a href="#" onClick={() => navigate('/createDeposit')} className='btn1'>Services</a>
+              <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                <button onClick={() => getDeposit('showDeposit', this)} className='btn btn-primary'>DEPOSITS</button>
+                <button onClick={() => getTransfer('showTransfer', this)} className='btn btn-primary'>TRANSFERS</button>
+                <button onClick={() => navigate('/createDeposit')} className='btn btn-primary'>PRODUCTS</button>
+                <button onClick={() => navigate('/createDeposit')} className='btn btn-primary'>SERVICES</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <section className='intro' style={{marginTop: '3rem'}}>
+
+      <section className='intro' style={{ marginTop: '3rem' }}>
         <div className='bg-image h-100' style={{ backgroundColor: '#f5f7fa', marginTop: '1.5rem' }}>
           <div className='mask d-flex align-items-center h-100'>
             <div className='container'>

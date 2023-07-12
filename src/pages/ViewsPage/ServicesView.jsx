@@ -88,7 +88,7 @@ export const ServicesView = () => {
                     <div className="a1">
                         <div className="search-box">
                             <div className="row1">
-                                <input type="text" id='inputSearch' placeholder='Search' value={search} onChange={handleChangeSearch}  />
+                                <input type="text" id='inputSearch' placeholder='Search' value={search} onChange={handleChangeSearch} />
                                 <button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-search bi-solid" viewBox="0 0 16 25">
                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -97,13 +97,10 @@ export const ServicesView = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-lg-2">
+                    <div className="col-md-2 col-lg-4">
                         <div className="row">
-                            <div className="col1">
-                                {/* <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>
-                                Exit
-                            </button> */}
-                                <a href="#" onClick={handleOpenModal} className='btn1'>Add</a>
+                            <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                                <a href="#" onClick={handleOpenModal} className='btn btn-primary' style={{ width: '20%' }}>ADD</a>
                             </div>
                         </div>
                     </div>
@@ -171,7 +168,7 @@ export const ServicesView = () => {
                 </div>
             </section >
             <br />
-            <ModalService isOpen={showModalServices} onClose={handleCloseModal}/>
+            <ModalService isOpen={showModalServices} onClose={handleCloseModal} />
         </>
     )
 }

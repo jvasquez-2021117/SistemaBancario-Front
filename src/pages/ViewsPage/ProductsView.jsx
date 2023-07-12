@@ -97,13 +97,11 @@ export const ProductsView = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-lg-2">
+
+                    <div className="col-md-2 col-lg-4">
                         <div className="row">
-                            <div className="col1">
-                                {/* <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>
-                                Exit
-                            </button> */}
-                                <a href="#" onClick={handleOpenModal} className='btn1'>Add</a>
+                            <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                                <button onClick={handleOpenModal} className='btn btn-primary' style={{ width: '20%' }}>ADD</button>
                             </div>
                         </div>
                     </div>
@@ -171,7 +169,7 @@ export const ProductsView = () => {
                 </div>
             </section >
             <br />
-            <ModalProduct isOpen={showModalProduct} onClose={handleCloseModal}/>
+            <ModalProduct isOpen={showModalProduct} onClose={handleCloseModal} />
         </>
     )
 }
