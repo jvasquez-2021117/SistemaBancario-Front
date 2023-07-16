@@ -52,11 +52,19 @@ export const Navbar = () => {
                     <div className=' collapse navbar-collapse' id='navbarNavDropdown'>
                         <h3 style={{ color: '#FFF', fontSize: 30, marginLeft: 10 }}>Cash Trust</h3>
                         {
-                            loggedIn == true ? (
+                            dataUser.role == 'ADMIN' ? (
                                 <ul className='navbar-nav ms-auto '>
                                     <li className='nav-item'>
                                         <Link to={'/home'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
                                             Home
+                                        </Link>
+                                    </li>
+                                </ul>
+                            ) : dataUser.role == 'CLIENT' ? (
+                                <ul className='navbar-nav ms-auto '>
+                                    <li className='nav-item'>
+                                        <Link to={'/ProfileAccountUser'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
+                                            Home2
                                         </Link>
                                     </li>
                                     <li className='nav-item'>
@@ -73,20 +81,38 @@ export const Navbar = () => {
                             ) : <></>
                         }
                         {
-                            loggedIn == true ? (
-                                <div className='dropdown'>
-                                    <svg style={{ color: '#FFF' }} xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-person-circle dropdown-toggle' viewBox='0 0 16 16'>
-                                        <path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z' />
-                                        <path fillRule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z' />
-                                    </svg>
-                                    <div className='dropdown-content dropdown-menu' id='desple'>
-                                        <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
-                                        <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
-                                        <a href="#" className='dropdown-item' onClick={() => navigate('/favorite')}>Favorites</a>
-                                        <a href="#" className='dropdown-item' onClick={() => navigate('/history')}>History</a>
-                                        <p onClick={() => logOut()} className='dropdown-item' id='logU'>LogOut</p>
+                            loggedIn == true && dataUser.role == 'CLIENT' ? (
+                                <>
+                                    <div className='dropdown'>
+                                        <svg style={{ color: '#FFF' }} xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-person-circle dropdown-toggle' viewBox='0 0 16 16'>
+                                            <path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z' />
+                                            <path fillRule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z' />
+                                        </svg>
+                                        <div className='dropdown-content dropdown-menu' id='desple'>
+                                            <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
+                                            <a href="#" className='dropdown-item' onClick={() => navigate('/ProfileAccountUser')}>Account</a>
+                                            <a href="#" className='dropdown-item' onClick={() => navigate('/favorite')}>Favorites</a>
+                                            <a href="#" className='dropdown-item' onClick={() => navigate('/history')}>History</a>
+                                            <p onClick={() => logOut()} className='dropdown-item' id='logU'>LogOut</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </>
+                            ) : <></>
+                        }
+                        {
+                            loggedIn == true && dataUser.role == 'ADMIN' ? (
+                                <>
+                                    <div className='dropdown'>
+                                        <svg style={{ color: '#FFF' }} xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-person-circle dropdown-toggle' viewBox='0 0 16 16'>
+                                            <path d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z' />
+                                            <path fillRule='evenodd' d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z' />
+                                        </svg>
+                                        <div className='dropdown-content dropdown-menu' id='desple'>
+                                            <a href="#" className='dropdown-item' onClick={() => navigate('/profile')}>Profile</a>
+                                            <p onClick={() => logOut()} className='dropdown-item' id='logU'>LogOut</p>
+                                        </div>
+                                    </div>
+                                </>
                             ) : <></>
                         }
                     </div>
