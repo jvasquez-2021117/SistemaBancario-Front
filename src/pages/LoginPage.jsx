@@ -63,7 +63,7 @@ export const LoginPage = () => {
         if (dataUser.role == 'ADMIN') {
             navigate('/home')
         } else if (dataUser.role == 'CLIENT') {
-            navigate('/ProfileAccountUser')
+            navigate('/home')
         }
     }, [dataUser])
     

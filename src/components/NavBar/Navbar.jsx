@@ -63,11 +63,6 @@ export const Navbar = () => {
                             ) : dataUser.role == 'CLIENT' ? (
                                 <ul className='navbar-nav ms-auto '>
                                     <li className='nav-item'>
-                                        <Link to={'/ProfileAccountUser'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
-                                            Home2
-                                        </Link>
-                                    </li>
-                                    <li className='nav-item'>
                                         <Link to={'/buyProducts'} id='aXD' className='nav-link mx-2 text-uppercase ' style={{ color: '#FFF' }}>
                                             Buy Products
                                         </Link>
