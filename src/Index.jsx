@@ -23,7 +23,6 @@ import { DepositView } from './pages/ViewsPage/DepositView'
 import { ProfileAccountsPage } from './pages/ProfileAccountsPage'
 import { AccountView } from './pages/ViewsPage/AccountView'
 import { FavoritPage } from './pages/FavoritPage'
-import { RecordPage } from './pages/RecordPage'
 import { HistoryView } from './pages/ViewsPage/HistoryView'
 import { BuyServicePage } from './pages/BuyServicePage'
 import { BuyProductPage } from './pages/BuyProductPage'
@@ -142,10 +141,6 @@ export const Index = () => {
                 {
                     path: '/favorite',
                     element: <FavoritPage />
-                },
-                {
-                    path: '/record',
-                    element: <RecordPage />
                 },
                 {
                     path: '/history',
