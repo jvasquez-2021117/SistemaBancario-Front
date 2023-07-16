@@ -976,7 +976,6 @@ thead {
 /*HOME PAGE*/
 .containerOptions {
     display: flex;
-    margin-left: 3em;
 }
 
 .columns {

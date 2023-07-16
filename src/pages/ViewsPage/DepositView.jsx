@@ -75,10 +75,12 @@ export const DepositView = () => {
               </div>
             </div>
           </div>
+
+
           <div className="col-md-2 col-lg-4">
             <div className="row">
               <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                <a href="#" onClick={handleOpenModal} className='btn btn-primary' style={{ width: '20%' }}>CREATE</a>
+                <button onClick={handleOpenModal} className='btn btn-primary' style={{ width: '50%' }}>CREATE DEPOSIT</button>
               </div>
             </div>
           </div>
@@ -144,8 +146,8 @@ export const DepositView = () => {
         </div>
       </section >
       <br />
-      <ModalDeposit isOpen={showModalDeposit} onClose={handleCloseModal} update={updateData}/>
-      <ModalPutDeposit isOpen={showModalPutDeposit} onClose={handleCloseModal2} datos={datos} update={updateData}/>
+      <ModalDeposit isOpen={showModalDeposit} onClose={handleCloseModal} update={updateData} />
+      <ModalPutDeposit isOpen={showModalPutDeposit} onClose={handleCloseModal2} datos={datos} update={updateData} />
     </>
   )
 }
