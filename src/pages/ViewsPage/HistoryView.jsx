@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { SiberBar } from '../../components/Sidebar/SiberBar'
 import { AuthContext } from '../../Index'
 
@@ -11,14 +11,25 @@ export const HistoryView = () => {
   const [showProducts, setShowProducts] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [title, setTitle] = useState('History');
+  const params = useParams();
+  const id = params.id
+  const [ idSearch, setIdSearch ] = useState(id);
 
-  const { dataUser } = useContext(AuthContext)
+  const { dataUser } = useContext(AuthContext);
+
+  const changeSearch = ()=> {
+    if(id === undefined){
+      setIdSearch(dataUser.id);
+    }else{
+      setIdSearch(id);
+    }
+  }
 
   const getDeposit = async (activate2) => {
     try {
       setTitle('History Deposit');
       handleButtonClick(activate2);
-      const { data } = await axios(`http://localhost:3200/historyDeposit/get/${dataUser.id}`);
+      const { data } = await axios(`http://localhost:3200/historyDeposit/get/${idSearch}`);
       setData(data.history)
       console.log(showDeposit);
     } catch (e) {
@@ -28,9 +39,14 @@ export const HistoryView = () => {
 
   const getTransfer = async (activate2) => {
     try {
+      if(!id || id === undefined){
+        setIdSearch(dataUser.id);
+      }else{
+        setIdSearch(id);
+      }
       setTitle('History Transfer');
       handleButtonClick(activate2);
-      const { data } = await axios(`http://localhost:3200/historyTransfer/get/${dataUser.id}`);
+      const { data } = await axios(`http://localhost:3200/historyTransfer/get/${idSearch}`);
       setData(data.history)
     } catch (e) {
       console.log(e);
@@ -39,9 +55,14 @@ export const HistoryView = () => {
 
   const getProducts = async (activate2) => {
     try {
+      if(!id || id === undefined){
+        setIdSearch(dataUser.id);
+      }else{
+        setIdSearch(id);
+      }
       setTitle('History purchased products');
       handleButtonClick(activate2);
-      const { data } = await axios(`http://localhost:3200/historyProducts/get/${dataUser.id}`);
+      const { data } = await axios(`http://localhost:3200/historyProducts/get/${idSearch}`);
       setData(data.history);
     } catch (e) {
       console.log(e);
@@ -50,9 +71,14 @@ export const HistoryView = () => {
 
   const getServices = async (activate2) => {
     try {
+      if(!id || id === undefined){
+        setIdSearch(dataUser.id);
+      }else{
+        setIdSearch(id);
+      }
       setTitle('History purchased services');
       handleButtonClick(activate2);
-      const { data } = await axios(`http://localhost:3200/historyServices/get/${dataUser.id}`);
+      const { data } = await axios(`http://localhost:3200/historyServices/get/${idSearch}`);
       setData(data.history);
     } catch (e) {
       console.log(e);
@@ -92,6 +118,7 @@ export const HistoryView = () => {
 
   }
 
+  useEffect(()=> {changeSearch()}, []);
 
   return (
     <>

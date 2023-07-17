@@ -143,7 +143,7 @@ export const Index = () => {
                     element: <FavoritPage />
                 },
                 {
-                    path: '/history',
+                    path: '/history/:id?',
                     element: <HistoryView/>
                 },
                 {
