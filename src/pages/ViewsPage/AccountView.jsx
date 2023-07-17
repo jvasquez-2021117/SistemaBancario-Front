@@ -75,7 +75,7 @@ export const AccountView = () => {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     const { data } = await axios.delete(`http://localhost:3200/account/delete/${id}`);
-                    getTableProducts();
+                    getTableAccount();
                     Swal.fire(
                         data.message,
                         '',

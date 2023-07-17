@@ -109,9 +109,12 @@ export const HistoryView = () => {
             <div className="row">
               <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                 <button onClick={() => getDeposit('showDeposit', this)} className='btn btn-primary'>DEPOSITS</button>
+                &ensp;
                 <button onClick={() => getTransfer('showTransfer', this)} className='btn btn-primary'>TRANSFERS</button>
-                <button onClick={() => navigate('/createDeposit')} className='btn btn-primary'>PRODUCTS</button>
-                <button onClick={() => navigate('/createDeposit')} className='btn btn-primary'>SERVICES</button>
+                &ensp;
+                <button onClick={() => getProducts('showProducts', this)} className='btn btn-primary'>PRODUCTS</button>
+                &ensp;
+                <button onClick={() => getServices('showService', this)} className='btn btn-primary'>SERVICES</button>
               </div>
             </div>
           </div>

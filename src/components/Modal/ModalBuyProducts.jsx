@@ -33,6 +33,7 @@ export const ModalBuyProducts = ({ isOpen, onClose, id }) => {
                 icon: 'success',
                 title: data.message
             })
+            onClose();
         } catch (e) {
             console.log(e);
         }
