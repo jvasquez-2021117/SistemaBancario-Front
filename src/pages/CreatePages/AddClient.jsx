@@ -35,6 +35,7 @@ export const AddClient = () => {
                 icon: 'success',
                 title: data.message
             })
+            document.getElementById('formm').reset();
         } catch (e) {
             Swal.fire({
                 icon: 'error',
@@ -51,7 +52,7 @@ export const AddClient = () => {
                     <div className='title'>
                         <p>Registration</p>
                     </div>
-                    <form action='#'>
+                    <form id='formm'>
                         <div className='user_details'>
                             <div className='input_box'>
                                 <label htmlFor='inputName'>Full Name</label>

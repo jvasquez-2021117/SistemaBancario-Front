@@ -47,7 +47,7 @@ export const ClienteView = () => {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     const { data } = await axios.delete(`http://localhost:3200/user/delete/${id}`);
-                    getTableProducts();
+                    getTableClient();
                     Swal.fire(
                         data.message,
                         '',

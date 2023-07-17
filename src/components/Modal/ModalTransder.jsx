@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Index';
 
-export const ModalTransder = ({ isOpen, onClose }) => {
+export const ModalTransder = ({ isOpen, onClose, update }) => {
     const navigate = useNavigate();
     const { dataUser } = useContext(AuthContext)
     const [ accounts, setAccounts ] = useState([{}]);
@@ -32,6 +32,7 @@ export const ModalTransder = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            update();
             onClose()
         } catch (e) {
             Swal.fire({

@@ -29,13 +29,12 @@ export const ModalShopService = ({ isOpen, onClose, id }) => {
                 service: id.id,
                 account: document.getElementById('inputAccount').value
             }
-            console.log(id);
-            console.log(add);
             const { data } = await axios.post('http://localhost:3200/shopService/buyService', add)
             Swal.fire({
                 icon: 'success',
                 title: data.message
             })
+            onClose();
         } catch (e) {
             console.log(e);
         }
