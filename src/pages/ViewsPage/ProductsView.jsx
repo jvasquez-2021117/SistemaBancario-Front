@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { SiberBar } from '../../components/Sidebar/SiberBar'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { TableProduct } from '../../components/Tables/TableProduct'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { ModalProduct } from '../../components/Modal/ModalProduct'
+import { SiberBar } from '../../components/Sidebar/SiberBar'
+import { TableProduct } from '../../components/Tables/TableProduct'
 
 export const ProductsView = () => {
     const navigate = useNavigate()
@@ -21,19 +21,6 @@ export const ProductsView = () => {
         } catch (e) {
             console.log(e);
         }
-    }
-
-    const handleChangeSearch = (e) => {
-        setSearch(e.target.value)
-        filtrar(e.target.value)
-    }
-
-    const filtrar = (searchTerm) => {
-        var resultSearch = tableProducts.filter((elemento) => {
-            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase()))
-                return elemento
-        })
-        setProducts(resultSearch)
     }
 
     const deleteProducts = async (id) => {
@@ -62,6 +49,19 @@ export const ProductsView = () => {
         }
     }
 
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableProducts.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                return elemento
+        })
+        setProducts(resultSearch)
+    }
+    
     const updateData = async () => {
         try {
             getTableProducts();
@@ -177,7 +177,7 @@ export const ProductsView = () => {
                 </div>
             </section >
             <br />
-            <ModalProduct isOpen={showModalProduct} onClose={handleCloseModal} update={updateData}/>
+            <ModalProduct isOpen={showModalProduct} onClose={handleCloseModal} update={updateData} />
         </>
     )
 }
