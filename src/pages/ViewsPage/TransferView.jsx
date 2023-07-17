@@ -5,6 +5,7 @@ import { TableTransfer } from '../../components/Tables/TableTransfer'
 import { SiberBar } from '../../components/Sidebar/SiberBar'
 
 export const TransferView = () => {
+
     const [transfer, setTransfer] = useState([{}])
     const [tableTransfer, setTableTransfer] = useState([{}])
     const [search, setSearch] = useState("")
