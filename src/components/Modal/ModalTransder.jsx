@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react'
-import { Modal} from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Index';
@@ -8,8 +8,8 @@ import { AuthContext } from '../../Index';
 export const ModalTransder = ({ isOpen, onClose, update }) => {
     const navigate = useNavigate();
     const { dataUser } = useContext(AuthContext)
-    const [ accounts, setAccounts ] = useState([{}]);
-    
+    const [accounts, setAccounts] = useState([{}]);
+
     const [form, setForm] = useState({
         accountReq: '',
         accountSender: '',
@@ -42,11 +42,11 @@ export const ModalTransder = ({ isOpen, onClose, update }) => {
         }
     }
 
-    const getAccount = async()=>{
-        try{
+    const getAccount = async () => {
+        try {
             const { data } = await axios(`http://localhost:3200/account/getByUser/${dataUser.id}`);
             setAccounts(data.accounts);
-        }catch(e){
+        } catch (e) {
             Swal.fire({
                 icon: 'error',
                 title: data.message
@@ -54,7 +54,7 @@ export const ModalTransder = ({ isOpen, onClose, update }) => {
         }
     }
 
-    useEffect(()=> { getAccount()}, []);
+    useEffect(() => { getAccount() }, []);
 
     if (!isOpen) {
         return null;
@@ -64,7 +64,7 @@ export const ModalTransder = ({ isOpen, onClose, update }) => {
             <Modal show={isOpen} size='lg'>
                 <Modal.Header>
                     <Modal.Title className='text-dark'>Transfer</Modal.Title>
-                    <button  onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
+                    <button onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </Modal.Header>
@@ -72,17 +72,21 @@ export const ModalTransder = ({ isOpen, onClose, update }) => {
                     <form action="#">
                         <div className="user_details">
                             <div className="input_box">
-                                <label htmlFor="inputRes">Reseptor</label>
+                                <label htmlFor="inputRes">Receptor</label>
                                 <input type="text" id="inputRes" placeholder="Enter the No. Account" onChange={createHandleChange} name='accountReq' required />
+                            </div>
+                            <div className="input_box">
+                                <label htmlFor="inputDpi">DPI Receptor</label>
+                                <input type="number" id="inputDpi" placeholder="Enter the amount" name='dpi' onChange={createHandleChange} required />
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputName">Elige tu cuenta</label>
                                 <select className='form-select' name='accountSender' onChange={createHandleChange}>
                                     <option defaultValue={'Open this select menu'}>Open this select menu</option>
                                     {
-                                        accounts.map(({ _id, balances}, i) => {
+                                        accounts.map(({ _id, balances }, i) => {
                                             return (
-                                                <option key={i} value={_id} className=''>{'No. ' + _id + ' | Balances: ' + balances}</option>
+                                                <option key={i} value={_id} className=''>{'No. ' + _id + ' | Balances: ' + 'Q ' + balances + '.00'}</option>
                                             )
                                         })
                                     }
@@ -91,10 +95,6 @@ export const ModalTransder = ({ isOpen, onClose, update }) => {
                             <div className="input_box">
                                 <label htmlFor="inputAmount">Amount</label>
                                 <input type="number" id="inputAmount" placeholder="Enter the amount" name='amount' onChange={createHandleChange} required />
-                            </div>
-                            <div className="input_box">
-                                <label htmlFor="inputDpi">DPI</label>
-                                <input type="number" id="inputDpi" placeholder="Enter the amount" name='dpi' onChange={createHandleChange} required />
                             </div>
                             <div className='input_box' style={{ width: '100%' }}>
                                 <label htmlFor='inputDescrip'>Description</label>
