@@ -18,7 +18,7 @@ export const TableAccountProfile = ({ _id, user, balances, typeAccount, state })
                         </div>
                         <p className="card-text text-end h5">
                             GTQ {balances} <br />
-                            <img src={CashLogo} className="img-fluid" alt="..." style={{ width: '8%', filter: 'invert(100%)', position: 'absolute', transform: 'translate(-1100%, -50%)', opacity: '0.5' }} />
+                            <img src={CashLogo} className="img-fluid" alt="..." style={{width: '8%', filter: 'invert(100%)', position: 'absolute', transform: 'translate(-1100%, -50%)', opacity: '0.5'}} />
                             <small className="text-muted">Saldo</small>
                         </p>
                     </div>

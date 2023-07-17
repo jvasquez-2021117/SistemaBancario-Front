@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 export const LoginPage = () => {
 
     const navigate = useNavigate();
-    const { setLoggedIn, setDataUser } = useContext(AuthContext);
+    const { setLoggedIn, setDataUser, dataUser } = useContext(AuthContext);
     const [form, setForm] = useState({
         username: '',
         password: ''
@@ -50,7 +50,6 @@ export const LoginPage = () => {
                     icon: 'success',
                     title: data.message,
                 })
-                navigate('/profile')
             }
         } catch (err) {
             Swal.fire({
@@ -60,6 +59,14 @@ export const LoginPage = () => {
         }
     }
 
+    useEffect(() => {
+        if (dataUser.role == 'ADMIN') {
+            navigate('/home')
+        } else if (dataUser.role == 'CLIENT') {
+            navigate('/home')
+        }
+    }, [dataUser])
+    
     return (
         <>
             <div className="split-screen a b">

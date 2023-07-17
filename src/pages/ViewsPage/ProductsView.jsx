@@ -109,7 +109,7 @@ export const ProductsView = () => {
                     <div className="col-md-2 col-lg-4">
                         <div className="row">
                             <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                <button onClick={handleOpenModal} className='btn btn-primary' style={{ width: '20%' }}>ADD</button>
+                                <button onClick={handleOpenModal} className='btn btn-primary' style={{ width: '50%' }}>ADD PRODUCT</button>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ export const ProductsView = () => {
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-6">
-                                    <div className="card">
+                                    <div className="card box-shadow">
                                         <div className="card-body p-0">
                                             <div className="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style={{ position: 'relative', height: '500px' }}>
                                                 <table className="table table-striped">

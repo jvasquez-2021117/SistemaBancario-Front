@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SiberBar } from '../../components/Sidebar/SiberBar'
-import { TableDeposit } from '../../components/Tables/TableDeposit'
 import { AuthContext } from '../../Index'
 
 export const HistoryView = () => {
@@ -13,7 +12,6 @@ export const HistoryView = () => {
   const [showServices, setShowServices] = useState(false);
   const [title, setTitle] = useState('History');
 
-  const navigate = useNavigate();
   const { dataUser } = useContext(AuthContext)
 
   const getDeposit = async (activate2) => {
@@ -45,18 +43,18 @@ export const HistoryView = () => {
       handleButtonClick(activate2);
       const { data } = await axios(`http://localhost:3200/historyProducts/get/${dataUser.id}`);
       setData(data.history);
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
 
   const getServices = async (activate2) => {
-    try{
+    try {
       setTitle('History purchased services');
       handleButtonClick(activate2);
       const { data } = await axios(`http://localhost:3200/historyServices/get/${dataUser.id}`);
       setData(data.history);
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
@@ -109,11 +107,11 @@ export const HistoryView = () => {
         <div className="row d-flex justify-content-center ">
           <div className="col-md-2 col-lg-4">
             <div className="row">
-              <div className="col1">
-                <a href="#" onClick={() => getDeposit('showDeposit')} className='btn1' >Deposit</a>
-                <a href="#" onClick={() => getTransfer('showTransfer')} className='btn1'>Transfer</a>
-                <a href="#" onClick={() => getProducts('showProducts')} className='btn1'>Products</a>
-                <a href="#" onClick={() => getServices('showService')} className='btn1'>Services</a>
+              <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                <button onClick={() => getDeposit('showDeposit', this)} className='btn btn-primary'>DEPOSITS</button>
+                <button onClick={() => getTransfer('showTransfer', this)} className='btn btn-primary'>TRANSFERS</button>
+                <button onClick={() => navigate('/createDeposit')} className='btn btn-primary'>PRODUCTS</button>
+                <button onClick={() => navigate('/createDeposit')} className='btn btn-primary'>SERVICES</button>
               </div>
             </div>
           </div>
@@ -149,23 +147,23 @@ export const HistoryView = () => {
                                       <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >HOUR</th>
                                       <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >DESCRIPTION</th>
                                     </>
-                                  : showProducts ?
-                                    <>
-                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PRODUCT</th>
-                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >QUANTITY</th>
-                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PRICE</th>
-                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >TOTAL</th>
-                                      <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PAYMENT ACCOUNT</th>
-                                    </>
-                                  : showServices ?
-                                  <>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Service</th>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PRICE</th>
-                                    <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PAYMENT ACCOUNT</th>
-                                  </>
-                                :   
-                                  <>
-                                  </>
+                                    : showProducts ?
+                                      <>
+                                        <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PRODUCT</th>
+                                        <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >QUANTITY</th>
+                                        <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PRICE</th>
+                                        <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >TOTAL</th>
+                                        <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PAYMENT ACCOUNT</th>
+                                      </>
+                                      : showServices ?
+                                        <>
+                                          <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >Service</th>
+                                          <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PRICE</th>
+                                          <th scope='col' className='text-white' style={{ backgroundColor: '#15297c' }} >PAYMENT ACCOUNT</th>
+                                        </>
+                                        :
+                                        <>
+                                        </>
                               }
                             </tr>
                           </thead>
@@ -196,30 +194,30 @@ export const HistoryView = () => {
                                     )
                                   })
                                   : showProducts ?
-                                  data.map(({ product }, i) => {
-                                    return (
-                                      <tr key={i}>
-                                        <td>{product?.product.name}</td>
-                                        <td>{product?.quantity}</td>
-                                        <td>{'Q' +  product?.product.price}</td>
-                                        <td>{'Q' +(product?.product.price)*(product?.quantity)}</td>
-                                        <td>{product?.account}</td>
-                                      </tr>
-                                    )
-                                  })
-                                  : showServices ?
-                                  data.map(({ service }, i) => {
-                                    return (
-                                      <tr key={i}>
-                                        <td>{service?.service.name}</td>
-                                        <td>{'Q' +  service?.service.price}</td>
-                                        <td>{service?.account}</td>
-                                      </tr>
-                                    )
-                                  })
-                                  :
-                                  <></>
-                                  
+                                    data.map(({ product }, i) => {
+                                      return (
+                                        <tr key={i}>
+                                          <td>{product?.product.name}</td>
+                                          <td>{product?.quantity}</td>
+                                          <td>{'Q' + product?.product.price}</td>
+                                          <td>{'Q' + (product?.product.price) * (product?.quantity)}</td>
+                                          <td>{product?.account}</td>
+                                        </tr>
+                                      )
+                                    })
+                                    : showServices ?
+                                      data.map(({ service }, i) => {
+                                        return (
+                                          <tr key={i}>
+                                            <td>{service?.service.name}</td>
+                                            <td>{'Q' + service?.service.price}</td>
+                                            <td>{service?.account}</td>
+                                          </tr>
+                                        )
+                                      })
+                                      :
+                                      <></>
+
                             }
                           </tbody>
                         </table>
