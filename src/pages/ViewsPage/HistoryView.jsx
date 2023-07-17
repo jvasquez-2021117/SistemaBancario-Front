@@ -104,9 +104,10 @@ export const HistoryView = () => {
           </div>
         </div>
       </nav>
+
       <div className="container t">
         <div className="row d-flex justify-content-center ">
-          <div className="col-md-2 col-lg-5">
+          <div className="col-md-2 col-lg-4">
             <div className="row">
               <div className="col1">
                 <a href="#" onClick={() => getDeposit('showDeposit')} className='btn1' >Deposit</a>

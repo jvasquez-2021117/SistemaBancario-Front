@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TableAccount = ({ _id, balances, typeAccount, state, user, dpi, movements}) => {
+export const TableAccount = ({ _id, balances, typeAccount, state, user, dpi, movements }) => {
     return (
         <>
             <td>{_id}</td>
