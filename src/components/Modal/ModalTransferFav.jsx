@@ -34,6 +34,7 @@ export const ModalTransferFav = ({ isOpen, onClose, datos }) => {
                 title: data.message
             })
             onClose();
+            getAccount();
         } catch (e) {
             console.log(e);
         }
@@ -79,7 +80,7 @@ export const ModalTransferFav = ({ isOpen, onClose, datos }) => {
                                     {
                                         accounts.map(({ _id, balances}, i) => {
                                             return (
-                                                <option key={i} value={_id} className=''>{'No. ' + _id + ' | Balances: ' + balances}</option>
+                                                <option key={i} value={_id} className=''>{'No. ' + _id + ' | Balances: Q ' + balances}</option>
                                             )
                                         })
                                     }
