@@ -6,15 +6,31 @@ import { SiberBar } from '../../components/Sidebar/SiberBar'
 
 export const TransferView = () => {
     const [transfer, setTransfer] = useState([{}])
+    const [tableTransfer, setTableTransfer] = useState([{}])
+    const [search, setSearch] = useState("")
     const navigate = useNavigate()
 
     const getTableTransfer = async () => {
         try {
             const { data } = await axios('http://localhost:3200/transfer/get');
             setTransfer(data.transfers);
+            setTableTransfer(data.transfers);
         } catch (e) {
             console.log(e);
         }
+    }
+
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableTransfer.filter((elemento) => {
+            if (elemento.date.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                return elemento
+        })
+        setTransfer(resultSearch)
     }
 
     useEffect(() => getTableTransfer, [])
@@ -34,7 +50,7 @@ export const TransferView = () => {
                     <div className="a1">
                         <div className="search-box">
                             <div className="row1">
-                                <input type="text" id='inputSearch' placeholder='Search' />
+                                <input type="text" id='inputSearch' placeholder='Search' value={search} onChange={handleChangeSearch} />
                                 <button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" className="bi bi-search bi-solid" viewBox="0 0 16 25">
                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -78,7 +94,7 @@ export const TransferView = () => {
                                                                             accountReq2={accountReq?.user.name}
                                                                             accountSender={accountSender?._id}
                                                                             accountSender2={accountSender?.user.name}
-                                                                            amount={amount +'.00 Q'}
+                                                                            amount={amount + '.00 Q'}
                                                                             date={date}
                                                                             hour={hour}
                                                                             description={description}

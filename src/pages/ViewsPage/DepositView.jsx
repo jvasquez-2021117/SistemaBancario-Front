@@ -8,19 +8,35 @@ import { ModalPutDeposit } from '../Updates/ModalPutDeposit'
 
 export const DepositView = () => {
   const [deposit, setDeposit] = useState([{}])
-  const navigate = useNavigate()
+  const [tableDeposits, setTableDeposits] = useState([{}])
+  const [search, setSearch] = useState("")
+
+  const [datos, setDatos] = useState({});
   const [showModalDeposit, setShowModalDeposit] = useState(false);
   const [showModalPutDeposit, setShowModalPutDeposit] = useState(false);
-  const [datos, setDatos] = useState({});
-
 
   const getTableDeposit = async () => {
     try {
       const { data } = await axios('http://localhost:3200/deposit/get');
       setDeposit(data.deposits)
+      setTableDeposits(data.deposits)
     } catch (e) {
       console.log(e);
     }
+  }
+
+  const handleChangeSearch = (e) => {
+    setSearch(e.target.value)
+    filtrar(e.target.value)
+  }
+
+  const filtrar = (searchTerm) => {
+    var resultSearch = tableDeposits.filter((elemento) => {
+      if (elemento.accountReq.user.name.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+        elemento.accountReq._id.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+        return elemento
+    })
+    setDeposit(resultSearch)
   }
 
   const updateData = async () => {
@@ -37,6 +53,7 @@ export const DepositView = () => {
   const handleCloseModal = () => {
     setShowModalDeposit(false);
   }
+
   const handleOpenModal2 = (id, amount) => {
     let datos1 = {
       id: id,
@@ -45,6 +62,7 @@ export const DepositView = () => {
     setDatos(datos1);
     setShowModalPutDeposit(true);
   }
+
   const handleCloseModal2 = () => {
     setShowModalPutDeposit(false);
   }
@@ -66,7 +84,7 @@ export const DepositView = () => {
           <div className="a1">
             <div className="search-box">
               <div className="row1">
-                <input type="text" id='inputSearch' placeholder='Search' />
+                <input type="text" id='inputSearch' placeholder='Search' value={search} onChange={handleChangeSearch} />
                 <button>
                   <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" className="bi bi-search bi-solid" viewBox="0 0 16 25">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -75,8 +93,6 @@ export const DepositView = () => {
               </div>
             </div>
           </div>
-
-
           <div className="col-md-2 col-lg-4">
             <div className="row">
               <div className="col1" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
@@ -108,9 +124,9 @@ export const DepositView = () => {
                           </thead>
                           <tbody>
                             {
-                              deposit.map(({ _id, accountReq, amount, accountReq2, date, hour }, i) => {
+                              deposit.map(({ _id, accountReq, amount, accountReq2, date, hour }, index) => {
                                 return (
-                                  <tr key={i}>
+                                  <tr key={index}>
                                     <TableDeposit
                                       accountReq={accountReq?._id}
                                       accountReq2={accountReq?.user.name}
