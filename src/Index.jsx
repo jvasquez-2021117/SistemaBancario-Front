@@ -26,6 +26,7 @@ import { FavoritPage } from './pages/FavoritPage'
 import { HistoryView } from './pages/ViewsPage/HistoryView'
 import { BuyServicePage } from './pages/BuyServicePage'
 import { BuyProductPage } from './pages/BuyProductPage'
+import { ChangePage } from './pages/ChangePage'
 
 export const AuthContext = createContext();
 
@@ -153,6 +154,10 @@ export const Index = () => {
                 {
                     path: '/buyProducts',
                     element: <BuyProductPage />
+                },
+                {
+                    path: '/change',
+                    element: <ChangePage/>
                 }
             ]
         }

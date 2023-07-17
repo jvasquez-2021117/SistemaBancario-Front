@@ -1,20 +1,10 @@
 import React, { useState } from 'react'
 import CashLogo from '../../assets/images/CashLogo.png'
 import { useNavigate } from 'react-router-dom';
-import { ModalTransder } from '../Modal/ModalTransder';
 
 export const TableAccountProfile = ({ _id, user, balances, typeAccount, state }) => {
     const navigate = useNavigate();
 
-    const [showModalTransfer, setShowModalTransfer] = useState(false);
-
-    const handleOpenModal = () => {
-        setShowModalTransfer(true);
-        console.log(showModalTransfer);
-    }
-    const handleCloseModal = () => {
-        setShowModalTransfer(false);
-    }
     return (
         <>
             <div className='container'>
@@ -35,7 +25,6 @@ export const TableAccountProfile = ({ _id, user, balances, typeAccount, state })
                 </div>
             </div>
             <br />
-            <ModalTransder isOpen={showModalTransfer} onClose={handleCloseModal}/>
         </>
     )
 }
