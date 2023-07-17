@@ -12,7 +12,6 @@ export const ModalFavorite = ({ isOpen, onClose, update }) => {
     const [form, setForm] = useState({
         owner: dataUser.id,
         nickName: '',
-        dpi: '',
         accountFav: ''
     })
 
@@ -60,12 +59,8 @@ export const ModalFavorite = ({ isOpen, onClose, update }) => {
                                 <input type="text" id="inputFav" placeholder="Enter the No. Account" name='accountFav' onChange={createHandleChange} required />
                             </div>
                             <div className="input_box">
-                                <label htmlFor="inputDpi">DPI</label>
-                                <input type="number" id="inputDpi" placeholder="Enter the DPI" name='dpi' /* onChange={createHandleChange} */ required />
-                            </div>
-                            <div className="input_box">
-                                <label htmlFor="inputName">Owner</label>
-                                <input type="text" id="inputName" placeholder="Enter the NickName" onChange={createHandleChange} name='nickName' required />
+                                <label htmlFor="inputDpi">nickName</label>
+                                <input type="text" id="nickName" placeholder="Enter the DPI" name='nickName' onChange={createHandleChange} required />
                             </div>
                         </div>
                         <div className="reg_btn">
