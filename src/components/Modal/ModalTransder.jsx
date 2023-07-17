@@ -1,11 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Modal} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Index';
 
 export const ModalTransder = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
+    const { dataUser } = useContext(AuthContext)
+    const [ accounts, setAccounts ] = useState([{}]);
     
     const [form, setForm] = useState({
         accountReq: '',
@@ -29,7 +32,7 @@ export const ModalTransder = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
-            navigate('/ProfileAccountUser')
+            onClose()
         } catch (e) {
             Swal.fire({
                 icon: 'error',
@@ -38,12 +41,26 @@ export const ModalTransder = ({ isOpen, onClose }) => {
         }
     }
 
+    const getAccount = async()=>{
+        try{
+            const { data } = await axios(`http://localhost:3200/account/getByUser/${dataUser.id}`);
+            setAccounts(data.accounts);
+        }catch(e){
+            Swal.fire({
+                icon: 'error',
+                title: data.message
+            })
+        }
+    }
+
+    useEffect(()=> { getAccount()}, []);
+
     if (!isOpen) {
         return null;
     }
     return (
         <>
-            <Modal show={isOpen}>
+            <Modal show={isOpen} size='lg'>
                 <Modal.Header>
                     <Modal.Title className='text-dark'>Transfer</Modal.Title>
                     <button  onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
@@ -58,8 +75,17 @@ export const ModalTransder = ({ isOpen, onClose }) => {
                                 <input type="text" id="inputRes" placeholder="Enter the No. Account" onChange={createHandleChange} name='accountReq' required />
                             </div>
                             <div className="input_box">
-                                <label htmlFor="inputReq">Emisor</label>
-                                <input type="text" id="inputReq" placeholder="Enter the amount" name='accountSender' onChange={createHandleChange} required />
+                                <label htmlFor="inputName">Elige tu cuenta</label>
+                                <select className='form-select' name='accountSender' onChange={createHandleChange}>
+                                    <option defaultValue={'Open this select menu'}>Open this select menu</option>
+                                    {
+                                        accounts.map(({ _id, balances}, i) => {
+                                            return (
+                                                <option key={i} value={_id} className=''>{'No. ' + _id + ' | Balances: ' + balances}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputAmount">Amount</label>

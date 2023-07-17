@@ -1,12 +1,13 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Modal } from 'react-bootstrap'
 import Swal from 'sweetalert2'
-
-
+import { AuthContext } from '../../Index'
 
 export const ModalTransferFav = ({ isOpen, onClose, datos }) => {
 
+    const [ accounts, setAccounts ] = useState([{}]);
+    const { dataUser } = useContext(AuthContext)
     const [form, setForm] = useState({
         accountReq: datos.accountFav /* document.getElementById('inputRes').value, */,
         accountSender: '',
@@ -34,6 +35,15 @@ export const ModalTransferFav = ({ isOpen, onClose, datos }) => {
             })
             onClose();
         } catch (e) {
+            console.log(e);
+        }
+    }
+
+    const getAccount = async()=>{
+        try{
+            const { data } = await axios(`http://localhost:3200/account/getByUser/${dataUser.id}`);
+            setAccounts(data.accounts);
+        }catch(e){
             Swal.fire({
                 icon: 'error',
                 title: data.message
@@ -41,12 +51,14 @@ export const ModalTransferFav = ({ isOpen, onClose, datos }) => {
         }
     }
 
+    useEffect(()=> { getAccount()}, []);
+    
     if (!isOpen) {
         return null
     }
     return (
         <>
-            <Modal show={isOpen}>
+            <Modal show={isOpen} size='lg'>
                 <Modal.Header>
                     <Modal.Title className='text-dark'>Transfer</Modal.Title>
                     <button onClick={onClose} type="button" className="btn" data-dismiss="modal" aria-label="Close">
@@ -58,11 +70,20 @@ export const ModalTransferFav = ({ isOpen, onClose, datos }) => {
                         <div className="user_details">
                             <div className="input_box">
                                 <label htmlFor="inputRes">Reseptor</label>
-                                <input defaultValue={datos.accountFav} type="text" id="inputRes" placeholder="Enter the No. Account" name='accountReq'  required />
+                                <input readOnly defaultValue={datos.accountFav} type="text" id="inputRes" placeholder="Enter the No. Account" name='accountReq'  required />
                             </div>
                             <div className="input_box">
-                                <label htmlFor="inputReq">Emisor</label>
-                                <input type="text" id="inputReq" placeholder="Enter the amount" name='accountSender' onChange={createHandleChange} required />
+                                <label htmlFor="inputName">Elige tu cuenta</label>
+                                <select className='form-select' id='inputTypeAccount' name='accountSender' onChange={createHandleChange}>
+                                    <option defaultValue={'Open this select menu'}>Open this select menu</option>
+                                    {
+                                        accounts.map(({ _id, balances}, i) => {
+                                            return (
+                                                <option key={i} value={_id} className=''>{'No. ' + _id + ' | Balances: ' + balances}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputAmount">Amount</label>
@@ -70,7 +91,7 @@ export const ModalTransferFav = ({ isOpen, onClose, datos }) => {
                             </div>
                             <div className="input_box">
                                 <label htmlFor="inputDpi">DPI</label>
-                                <input defaultValue={datos.dpi} type="number" id="inputDpi" placeholder="Enter the amount" name='dpi'  required />
+                                <input readOnly defaultValue={datos.dpi} type="number" id="inputDpi" placeholder="Enter the amount" name='dpi'  required />
                             </div>
                             <div className='input_box' style={{ width: '100%' }}>
                                 <label htmlFor='inputDescrip'>Description</label>
