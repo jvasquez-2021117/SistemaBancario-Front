@@ -33,7 +33,8 @@ export const ModalTransder = ({ isOpen, onClose, update }) => {
                 title: data.message
             })
             update();
-            onClose()
+            onClose();
+            getAccount();
         } catch (e) {
             Swal.fire({
                 icon: 'error',
