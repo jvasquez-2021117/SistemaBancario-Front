@@ -61,9 +61,15 @@ export const ProfilePage = () => {
                                 <input type="text" id="inputAddress" placeholder='Enter your Address' defaultValue={dataUser.adress} name="adress" readOnly />
                             </div>
                         </div>
-                        <div className='reg_btn'>
-                            <button type='button' onClick={() => navigate(`/updateProfile/${dataUser.id}`)}>Update</button>
-                        </div>
+                        {
+                            dataUser.role == 'CLIENT' ?
+                            <>
+                            <div className='reg_btn'>
+                                <button type='button' onClick={() => navigate(`/updateProfile/${dataUser.id}`)}>Update</button>
+                            </div>
+                            </> :
+                            <></>
+                        }
                     </form>
                 </div>
             </div>
