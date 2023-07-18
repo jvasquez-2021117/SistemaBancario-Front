@@ -35,7 +35,9 @@ export const UpdateProfile = () => {
                 icon: 'success',
                 title: data.message
             })
-            navigate(`/profile?username=${updatedAccountUser.username}&email=${updatedAccountUser.email}&phone=${updatedAccountUser.phone}`)
+            if(data.message == 'Updated User') {
+                navigate(`/profile?username=${updatedAccountUser.username}&email=${updatedAccountUser.email}&phone=${updatedAccountUser.phone}`)
+            }
         } catch (e) {
             Swal.fire({
                 icon: 'error',
